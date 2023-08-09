@@ -1,5 +1,7 @@
 ## Zoologico Campus 
 
+![](https://raw.githubusercontent.com/Nirclaw/zoologico_campus/main/img/08-12-19-Las-5-de-El-Rey-Le%C3%B3n-1.jpg)
+
 **1. Diversidad de Experiencias:** En nuestro establecimiento, no solo podrás disfrutar de la emocionante exhibición de diversas especies de animales en hábitats naturales, sino que también te sumergirás en el intrigante mundo de la arqueología. Nuestro objetivo es ofrecer una experiencia educativa única y diversa.
 
 **2. Exhibiciones de Arqueología:** Además de las exhibiciones de animales, presentamos una sección dedicada a la arqueología. Aquí, podrás explorar artefactos históricos, aprender sobre civilizaciones antiguas y descubrir la riqueza cultural que ha dado forma a nuestra historia.
@@ -17,3 +19,5 @@
 **8. Inspiración Continua:** Esperamos que tu visita a nuestro Zoo y Centro de Arqueología sea una fuente de inspiración y aprendizaje constante. Queremos estimular la curiosidad y el respeto por la naturaleza y la historia, alentándote a explorar más allá de lo evidente.
 
 Disfruta de una experiencia enriquecedora y emocionante mientras te sumerges en el mundo de la vida animal y la historia humana en un solo lugar. ¡Te damos la bienvenida a un viaje único de descubrimiento!
+
+![](https://raw.githubusercontent.com/Nirclaw/zoologico_campus/main/img/Screenshot_from_2023-08-09_07-52-20.png)
