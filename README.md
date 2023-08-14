@@ -21,3 +21,66 @@
 Disfruta de una experiencia enriquecedora y emocionante mientras te sumerges en el mundo de la vida animal y la historia humana en un solo lugar. ¡Te damos la bienvenida a un viaje único de descubrimiento!
 
 ![](https://raw.githubusercontent.com/Nirclaw/zoologico_campus/main/img/Screenshot_from_2023-08-09_07-52-20.png)
+
+## Objetivos y Alcances
+
+Este proyecto tiene como objetivo desarrollar un sistema de gestión para un zoológico, que permitirá el registro y seguimiento de usuarios, animales, empleados, insumos y zonas del zoológico. El sistema se basará en una base de datos MongoDB y seguirá las mejores prácticas de desarrollo, incluyendo el uso de patrones DTO (Data Transfer Object), límites de peticiones por minuto, validación de entrada con JWT provisional y manejo de errores personalizados. A continuación, se detallan los aspectos clave del sistema:
+
+### Registro de Usuarios
+
+- Búsqueda de usuarios por cédula y nombre.
+- Listado de todos los usuarios.
+- Registro de nuevos usuarios.
+- Actualización de información de usuarios existentes.
+- Eliminación de usuarios por ID.
+
+### Registro de Animales
+
+- Búsqueda de animales por clasificación basada en alimentación (hervívoro, carnívoro, omnívoro).
+- Búsqueda de animales por clasificación basada en su hábitat (terrestres, acuáticos, aéreos).
+- Búsqueda de animales por nombre.
+- Listado de todos los animales existentes.
+- Registro de nuevos animales.
+- Actualización de información de animales existentes.
+- Eliminación de animales por ID.
+
+### Registro de Empleados
+
+- Búsqueda de empleados por cédula, nombre y cargo.
+- Listado de todos los empleados.
+- Registro de nuevos empleados.
+- Actualización de información de empleados existentes.
+- Eliminación de empleados por ID.
+
+### Registro de Insumos
+
+- Búsqueda de insumos por nombre.
+- Listado de todos los insumos.
+- Registro de nuevos insumos.
+- Actualización de información de insumos existentes.
+- Eliminación de insumos por ID.
+
+### Registro de Zonas del Zoológico
+
+- Búsqueda de zonas por nombre.
+- Listado de todas las zonas.
+- Registro de nuevas zonas.
+- Actualización de información de zonas existentes.
+- Eliminación de zonas por ID.
+
+### Librerías Utilizadas
+
+El desarrollo del sistema utilizará las siguientes librerías:
+
+- class-transformer
+- class-validator
+- dotenv
+- express
+- express-rate-limit
+- jose
+- mongodb
+- nodemon
+- reflect-metadata
+- typescript
+
+El sistema será desarrollado en TypeScript y seguirá una estructura de código organizada y mantenible. Se implementarán las funcionalidades requeridas, incluyendo la validación de entrada, el manejo de JWT provisional y la gestión de errores personalizados. Además, se aplicarán las buenas prácticas de desarrollo y seguridad para garantizar el correcto funcionamiento del sistema de gestión del zoológico.
