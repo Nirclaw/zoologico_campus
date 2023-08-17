@@ -3,6 +3,7 @@ db.createCollection("contador");
 db.contador.insertMany([
   { id: "clienteID", contador_valor: 0 },
   { id: "animalesID", contador_valor: 0 },
+  { id: "empleadosID", contador_valor: 0 },{ id: "zonasID", contador_valor: 0 },{}
 ]);
 
 use("mongo_zoo");
@@ -76,9 +77,9 @@ db.createCollection("animales", {
         "historial_medico",
       ],
       properties: {
-        id:{
-            bsonType:"number",
-            description:"el tipo de dato es incorrecto"
+        id: {
+          bsonType: "number",
+          description: "el tipo de dato es incorrecto",
         },
         nombre: {
           bsonType: "string",
@@ -132,3 +133,139 @@ db.createCollection("animales", {
     },
   },
 });
+
+use("mongo_zoo");
+db.createCollection("empleados", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "empleados",
+      required: [
+        "nombre_completo",
+        "departamento",
+        "cargo",
+        "telefono",
+        "correo_electronico",
+      ],
+      properties: {
+        id: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        nombre_completo: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        departamento: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        cargo: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        telefono: {
+          bsonType: "number",
+          description: "el tipo de dato es incorrecto",
+        },
+        correo_electronico: {
+          bsonType: "string",
+          description: "El tipo de dato no es correcto",
+          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("insumos", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "insumos",
+      required: [
+        "id",
+        "nombre",
+        "descripcion",
+        "fecha_compra",
+        "cantidad",
+        "proveedor",
+      ],
+      properties: {
+        id: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "dato incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        descripcion: {
+          bsonType: "string",
+          description: "el dato es icorrecto",
+        },
+        fecha_compra: {
+          bsonType: "string",
+          description: "la fecha debe ser YYYY-MM-DD",
+          pattern:
+            "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
+        },
+        cantidad: {
+          bsonType: "number",
+          description: "el dato es incorrecto",
+        },
+        proveedor: {
+          bsonType: "string",
+          description: "dato incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("zonas", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "Zonas",
+      required: ["nombre", "descripcion", "dimension"],
+      properties: {
+        nombre: {
+          bsonType: "string",
+          description: "Dato incorrecto incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        descripcion: {
+          bsonType: "string",
+          description: "el dato es icorrecto",
+        },
+        dimension: {
+          bsonType: "object",
+          required: ["alto", "ancho"],
+          properties: {
+            alto: {
+              bsonType: "number",
+              description: "dato incorrecto",
+            },
+            ancho: {
+              bsonType: "number",
+              description: "dato incorrecto",
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("taquilla",{
+
+})
