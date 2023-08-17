@@ -1,0 +1,42 @@
+use("mongo_zoo")
+db.createCollection("cliente", {
+    validation: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "clientes",
+            required: ["cedula", "nombre_completo", "numero_telefonico", "edad", "direccion", "correo_electronico"],
+            properties: {
+                cedula: {
+                    bsonType: "number",
+                    description: "El tipo de dato es incorrecto"
+                },
+                nombre_completo: {
+                    bsonType: "string",
+                    description: "El tipo de dato es incorrecto",
+                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$"
+                },
+                numero_telefonico: {
+                    bsonType: "number",
+                    description: "El tipo de dato no es correcto",
+                },
+                edad: {
+                    bsonType: "number",
+                    description: "El tipo de dato no es correcto",
+                    pattern: "^(?:100|[1-9][0-9]?)$"
+                },
+                direccion: {
+                    bsonType:"string",
+                    description:"El tipo de dato no es correcto",
+                },
+                correo_electronico:{
+                    bsonType:"string",
+                    description:"El tipo de dato no es correcto",
+                    pattern:"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                }
+            }
+        }
+    }
+
+})
+
+use("mongo_zoo")
