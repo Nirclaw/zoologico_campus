@@ -1,42 +1,134 @@
-use("mongo_zoo")
+use("mongo_zoo");
+db.createCollection("contador");
+db.contador.insertMany([
+  { id: "clienteID", contador_valor: 0 },
+  { id: "animalesID", contador_valor: 0 },
+]);
+
+use("mongo_zoo");
 db.createCollection("cliente", {
-    validation: {
-        $jsonSchema: {
-            bsonType: "object",
-            title: "clientes",
-            required: ["cedula", "nombre_completo", "numero_telefonico", "edad", "direccion", "correo_electronico"],
-            properties: {
-                cedula: {
-                    bsonType: "number",
-                    description: "El tipo de dato es incorrecto"
-                },
-                nombre_completo: {
-                    bsonType: "string",
-                    description: "El tipo de dato es incorrecto",
-                    pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$"
-                },
-                numero_telefonico: {
-                    bsonType: "number",
-                    description: "El tipo de dato no es correcto",
-                },
-                edad: {
-                    bsonType: "number",
-                    description: "El tipo de dato no es correcto",
-                    pattern: "^(?:100|[1-9][0-9]?)$"
-                },
-                direccion: {
-                    bsonType:"string",
-                    description:"El tipo de dato no es correcto",
-                },
-                correo_electronico:{
-                    bsonType:"string",
-                    description:"El tipo de dato no es correcto",
-                    pattern:"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                }
-            }
-        }
-    }
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "clientes",
+      required: [
+        "id",
+        "cedula",
+        "nombre_completo",
+        "numero_telefonico",
+        "edad",
+        "direccion",
+        "correo_electronico",
+      ],
+      properties: {
+        id: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        cedula: {
+          bsonType: "number",
+          description: "El tipo de dato es incorrecto",
+        },
+        nombre_completo: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        numero_telefonico: {
+          bsonType: "number",
+          description: "El tipo de dato no es correcto",
+        },
+        edad: {
+          bsonType: "number",
+          description: "El tipo de dato no es correcto",
+          pattern: "^(?:100|[1-9][0-9]?)$",
+        },
+        direccion: {
+          bsonType: "string",
+          description: "El tipo de dato no es correcto",
+        },
+        correo_electronico: {
+          bsonType: "string",
+          description: "El tipo de dato no es correcto",
+          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+        },
+      },
+    },
+  },
+});
 
-})
-
-use("mongo_zoo")
+use("mongo_zoo");
+db.createCollection("animales", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "animales",
+      required: [
+        "id",
+        "nombre",
+        "especie",
+        "edad",
+        "sexo",
+        "dimension",
+        "peso",
+        "zona",
+        "habitat",
+        "historial_medico",
+      ],
+      properties: {
+        id:{
+            bsonType:"number",
+            description:"el tipo de dato es incorrecto"
+        },
+        nombre: {
+          bsonType: "string",
+          description: "Dato incorrecto incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        especie: {
+          bsonType: "string",
+          description: "Dato es incorrecto",
+        },
+        edad: {
+          bsonType: "number",
+          description: "Dato incorrecto",
+          pattern: "^(?:100|[1-9][0-9]?)$",
+        },
+        sexo: {
+          enum: ["macho", "hembra"],
+          description: "Debeser macho o hembra",
+        },
+        dimension: {
+          bsonType: "object",
+          required: ["alto", "ancho"],
+          properties: {
+            alto: {
+              bsonType: "number",
+              description: "dato incorrecto",
+            },
+            ancho: {
+              bsonType: "number",
+              description: "dato incorrecto",
+            },
+          },
+        },
+        peso: {
+          bsonType: "number",
+          description: "el dato es incorrecto",
+        },
+        zona: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+        habitat: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+        historial_medico: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+      },
+    },
+  },
+});
