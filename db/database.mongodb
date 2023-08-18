@@ -3,60 +3,10 @@ db.createCollection("contador");
 db.contador.insertMany([
   { id: "clienteID", contador_valor: 0 },
   { id: "animalesID", contador_valor: 0 },
-  { id: "empleadosID", contador_valor: 0 },{ id: "zonasID", contador_valor: 0 },{}
+  { id: "empleadosID", contador_valor: 0 }, { id: "zonasID", contador_valor: 0 }, {}
 ]);
 
-use("mongo_zoo");
-db.createCollection("cliente", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      title: "clientes",
-      required: [
-        "id",
-        "cedula",
-        "nombre_completo",
-        "numero_telefonico",
-        "edad",
-        "direccion",
-        "correo_electronico",
-      ],
-      properties: {
-        id: {
-          bsonType: "number",
-          description: "el tipo es dato incorrecto",
-        },
-        cedula: {
-          bsonType: "number",
-          description: "El tipo de dato es incorrecto",
-        },
-        nombre_completo: {
-          bsonType: "string",
-          description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
-        },
-        numero_telefonico: {
-          bsonType: "number",
-          description: "El tipo de dato no es correcto",
-        },
-        edad: {
-          bsonType: "number",
-          description: "El tipo de dato no es correcto",
-          pattern: "^(?:100|[1-9][0-9]?)$",
-        },
-        direccion: {
-          bsonType: "string",
-          description: "El tipo de dato no es correcto",
-        },
-        correo_electronico: {
-          bsonType: "string",
-          description: "El tipo de dato no es correcto",
-          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
-        },
-      },
-    },
-  },
-});
+
 
 use("mongo_zoo");
 db.createCollection("animales", {
@@ -70,7 +20,8 @@ db.createCollection("animales", {
         "especie",
         "edad",
         "sexo",
-        "dimension",
+        "tipo_alimentacion",
+        "tamano",
         "peso",
         "zona",
         "habitat",
@@ -95,23 +46,17 @@ db.createCollection("animales", {
           description: "Dato incorrecto",
           pattern: "^(?:100|[1-9][0-9]?)$",
         },
+        tipo_alimentacion: {
+          enum: ["plantas", "carne", "inseptos", "frutas"]
+          , description: "plantas o carne o inseptos o frutas"
+        },
         sexo: {
           enum: ["macho", "hembra"],
           description: "Debeser macho o hembra",
         },
-        dimension: {
-          bsonType: "object",
-          required: ["alto", "ancho"],
-          properties: {
-            alto: {
-              bsonType: "number",
-              description: "dato incorrecto",
-            },
-            ancho: {
-              bsonType: "number",
-              description: "dato incorrecto",
-            },
-          },
+        altura: {
+          bsonType: "number",
+          description: "dato in correcto"
         },
         peso: {
           bsonType: "number",
@@ -141,18 +86,25 @@ db.createCollection("empleados", {
       bsonType: "object",
       title: "empleados",
       required: [
-        "nombre_completo",
+        "id",
+        "cedula",
+        "nombre",
         "departamento",
         "cargo",
         "telefono",
         "correo_electronico",
+        "direccion"
       ],
       properties: {
         id: {
           bsonType: "number",
           description: "el tipo es dato incorrecto",
         },
-        nombre_completo: {
+        cedula: {
+          bsonType: "number",
+          description: "el tipo de dato es incorrecto"
+        },
+        nombre: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
           pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
@@ -176,6 +128,10 @@ db.createCollection("empleados", {
           description: "El tipo de dato no es correcto",
           pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
         },
+        direccion: {
+          bsonType: "string",
+          description: "el tipo de dato no es correct"
+        }
       },
     },
   },
@@ -235,12 +191,19 @@ db.createCollection("zonas", {
     $jsonSchema: {
       bsonType: "object",
       title: "Zonas",
-      required: ["nombre", "descripcion", "dimension"],
+      required: ["id", "nombre", "descripcion", "clasificacion", "dimension"],
       properties: {
+        id: {
+          bsonType: "int",
+          description: "el tipo de dato no es correcto"
+        },
         nombre: {
           bsonType: "string",
           description: "Dato incorrecto incorrecto",
           pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        }, clasificacion: {
+          bsonType: "string",
+          description: "dato es incorrecto"
         },
         descripcion: {
           bsonType: "string",
@@ -248,13 +211,13 @@ db.createCollection("zonas", {
         },
         dimension: {
           bsonType: "object",
-          required: ["alto", "ancho"],
+          required: ["ancho", "largo"],
           properties: {
-            alto: {
+            ancho: {
               bsonType: "number",
               description: "dato incorrecto",
             },
-            ancho: {
+            largo: {
               bsonType: "number",
               description: "dato incorrecto",
             },
@@ -266,6 +229,51 @@ db.createCollection("zonas", {
 });
 
 use("mongo_zoo");
-db.createCollection("taquilla",{
+db.createCollection("taquilla", {
 
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "taquilla",
+      required: ["id", "cedula", "nombre", "telefono", "fecha_ingreso", "categoria"],
+      properties: {
+        id: {
+          bsonType: "int",
+          description: "el tipo de dato no es correcto"
+        }, cedula: {
+          bsonType: "number",
+          description: "el tipo de dato es incorrecto"
+        },
+        nombre: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+        },
+        telefono: {
+          bsonType: "number",
+          description: "el tipo de dato es incorrecto",
+        },
+        fecha_ingreso: {
+          bsonType: "string",
+          description: "la fecha debe ser YYYY-MM-DD",
+          pattern:
+            "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
+        },
+        categoria: {
+          bsonType: "object",
+          required: ["tipo", "precio"],
+          properties: {
+            tipo: {
+              enum: ["basico", "vip"],
+              description: "debe ser basico o vip"
+            },
+            precio: {
+              bsonType: "number",
+              description: "el dato es incorrecto"
+            }
+          }
+        }
+      }
+    }
+  }
 })
