@@ -6,8 +6,6 @@ db.contador.insertMany([
   { id: "empleadosID", contador_valor: 0 }, { id: "zonasID", contador_valor: 0 }, {}
 ]);
 
-
-
 use("mongo_zoo");
 db.createCollection("animales", {
   validator: {
@@ -47,16 +45,16 @@ db.createCollection("animales", {
           pattern: "^(?:100|[1-9][0-9]?)$",
         },
         tipo_alimentacion: {
-          enum: ["plantas", "carne", "inseptos", "frutas"]
-          , description: "plantas o carne o inseptos o frutas"
+          enum: ["plantas", "carne", "inseptos", "frutas"], 
+          description: "plantas o carne o inseptos o frutas"
         },
         sexo: {
           enum: ["macho", "hembra"],
-          description: "Debeser macho o hembra",
+          description: "Debe ser macho o hembra",
         },
         altura: {
           bsonType: "number",
-          description: "dato in correcto"
+          description: "el dato es incorrecto"
         },
         peso: {
           bsonType: "number",
@@ -78,6 +76,153 @@ db.createCollection("animales", {
     },
   },
 });
+
+use("mongo_zoo")
+db.animales.insertMany([
+  {
+    id: 1,
+    nombre: "Leon",
+    especie: "Panthera leo",
+    edad: 18,
+    tipo_alimentacion : "Carne",
+    sexo: "Macho",
+    altura: "1.43",
+    peso: "54 kilos",
+    zona: "Zona de carnivoros",
+    habitat: "Sabana",
+    historial_medico: "Llega en buen estado de salud"
+  },
+  {
+    id: 2,
+    nombre: "Elefante Africano",
+    especie: "Loxodonta africana",
+    edad: 35,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Hembra",
+    altura: "3.2 metros",
+    peso: "4500 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Sabana y bosques",
+    historial_medico: "Tratamiento para una lesión en la pata delantera derecha."
+  },
+  {
+    id: 2,
+    nombre: "Elefante Africano",
+    especie: "Loxodonta africana",
+    edad: 35,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Hembra",
+    altura: "3.2 metros",
+    peso: "4500 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Sabana y bosques",
+    historial_medico: "Tratamiento para una lesión en la pata delantera derecha."
+  },
+  {
+    id: 3,
+    nombre: "Tigre de Bengala",
+    especie: "Panthera tigris tigris",
+    edad: 10,
+    tipo_alimentacion: "Carnívoro",
+    sexo: "Macho",
+    altura: "1.1 metros",
+    peso: "250 kilos",
+    zona: "Zona de carnívoros",
+    habitat: "Selvas y manglares",
+    historial_medico: "Control regular de salud; en buen estado."
+  },
+  {
+    id: 4,
+    nombre: "Cebra de Grevy",
+    especie: "Equus grevyi",
+    edad: 7,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Hembra",
+    altura: "1.5 metros",
+    peso: "400 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Llanuras y sabanas",
+    historial_medico: "Recuperándose de una lesión en la pierna."
+  },
+  {
+    id: 5,
+    nombre: "Girafa Masai",
+    especie: "Giraffa tippelskirchi",
+    edad: 9,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Hembra",
+    altura: "5.5 metros",
+    peso: "1200 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Savanas y bosques abiertos",
+    historial_medico: "Recuperándose de una pequeña herida en el cuello."
+  },
+  {
+    id: 6,
+    nombre: "Lobo Gris",
+    especie: "Canis lupus",
+    edad: 6,
+    tipo_alimentacion: "Carnívoro",
+    sexo: "Macho",
+    altura: "0.75 metros",
+    peso: "40 kilos",
+    zona: "Zona de carnívoros",
+    habitat: "Bosques y montañas",
+    historial_medico: "En buen estado de salud, se le realiza seguimiento regular."
+  },
+  {
+    id: 7,
+    nombre: "Hipopótamo Común",
+    especie: "Hippopotamus amphibius",
+    edad: 20,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Macho",
+    altura: "1.5 metros",
+    peso: "1800 kilos",
+    zona: "Zona de herbívoros acuáticos",
+    habitat: "Ríos y lagos de África",
+    historial_medico: "Recientemente tratado por una infección en la piel."
+  },
+  {
+    id: 8,
+    nombre: "Hipopótamo Común",
+    especie: "Hippopotamus amphibius",
+    edad: 20,
+    tipo_alimentacion: "Herbívoro",
+    sexo: "Macho",
+    altura: "1.5 metros",
+    peso: "1800 kilos",
+    zona: "Zona de herbívoros acuáticos",
+    habitat: "Ríos y lagos de África",
+    historial_medico: "Recientemente tratado por una infección en la piel."
+  },
+  {
+    id: 9,
+    nombre: "Cocodrilo del Nilo",
+    especie: "Crocodylus niloticus",
+    edad: 30,
+    tipo_alimentacion: "Carnívoro",
+    sexo: "Hembra",
+    altura: "1.7 metros",
+    peso: "400 kilos",
+    zona: "Zona de reptiles acuáticos",
+    habitat: "Ríos y lagos de África",
+    historial_medico: "En buen estado de salud, se le realiza seguimiento regular."
+  },
+  {
+    id: 10,
+    nombre: "Águila Calva",
+    especie: "Haliaeetus leucocephalus",
+    edad: 12,
+    tipo_alimentacion: "Carnívoro",
+    sexo: "Macho",
+    altura: "0.9 metros",
+    peso: "4 kilos",
+    zona: "Zona de aves rapaces",
+    habitat: "Bosques y áreas costeras de América del Norte",
+    historial_medico: "En excelente estado de salud, símbolo nacional de los Estados Unidos."
+  }
+])
 
 use("mongo_zoo");
 db.createCollection("empleados", {
@@ -126,16 +271,70 @@ db.createCollection("empleados", {
         correo_electronico: {
           bsonType: "string",
           description: "El tipo de dato no es correcto",
-          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$",
+          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
         },
         direccion: {
           bsonType: "string",
-          description: "el tipo de dato no es correct"
+          description: "el tipo de dato no es correcto"
         }
-      },
-    },
-  },
+      }
+    }
+  }
 });
+
+use("mongo_zoo")
+db.empleados.insertMany([
+  {
+    id: 1,
+    cedula: 110231923,
+    nombre: "Katherin Parra",
+    telefono: "+57 3202514581",
+    direccion : "Calle 58 # 12 - 45 Bucaramanga, Santander",
+    correo_electronico: "Katherin@gmail.com",
+    departamento: "Sistemas",
+    cargo: "Jefe en departamento de sistemas"
+  },
+  {
+    id: 2,
+    cedula: 210456789,
+    nombre: "Juan Pérez",
+    telefono: "+57 3101234567",
+    direccion: "Avenida 5 # 23 - 67 Medellín, Antioquia",
+    correo_electronico: "juan.perez@email.com",
+    departamento: "Recursos Humanos",
+    cargo: "Especialista en Contratación"
+  },
+  {
+    id: 3,
+    cedula: 123789456,
+    nombre: "Laura Rodríguez",
+    telefono: "+57 3159876543",
+    direccion: "Carrera 12 # 34 - 56 Bogotá, D.C.",
+    correo_electronico: "laura.rodriguez@email.com",
+    departamento: "Finanzas",
+    cargo: "Contadora Principal"
+  },
+  {
+    id: 4,
+    cedula: 987654321,
+    nombre: "Carlos Gómez",
+    telefono: "+57 3007654321",
+    direccion: "Calle 7 # 45 - 22 Barranquilla, Atlántico",
+    correo_electronico: "carlos.gomez@email.com",
+    departamento: "Administración",
+    cargo: "Asistente Administrativo"
+  },
+  {
+    id: 5,
+    cedula: 789123456,
+    nombre: "María López",
+    telefono: "+57 3109871234",
+    direccion: "Avenida 2 # 10 - 15 Cali, Valle del Cauca",
+    correo_electronico: "maria.lopez@email.com",
+    departamento: "Marketing",
+    cargo: "Especialista en Estrategia de Marketing"
+  }
+])
 
 use("mongo_zoo");
 db.createCollection("insumos", {
@@ -158,32 +357,75 @@ db.createCollection("insumos", {
         },
         nombre: {
           bsonType: "string",
-          description: "dato incorrecto",
+          description: "el tipo es dato incorrecto",
           pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
         },
         descripcion: {
           bsonType: "string",
-          description: "el dato es icorrecto",
+          description: "el tipo es dato incorrecto"
         },
         fecha_compra: {
           bsonType: "string",
           description: "la fecha debe ser YYYY-MM-DD",
-          pattern:
-            "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
+          pattern: "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
         },
         cantidad: {
           bsonType: "number",
-          description: "el dato es incorrecto",
+          description: "el tipo es dato incorrecto",
         },
         proveedor: {
           bsonType: "string",
-          description: "dato incorrecto",
+          description: "el tipo es dato incorrecto",
           pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
         },
       },
     },
   },
 });
+
+use("mongo_zoo")
+db.insumos.insertMany([
+  {
+    id: 1,
+    nombre: "Azitromicina",
+    descripcion: "Azitromicina para animales",
+    fecha_compra: "2023-08-12",
+    cantidad: 20,
+    proveedor: "NexGard"
+  },
+  {
+    id: 2,
+    nombre: "Paracetamol 500 mg",
+    descripcion: "Analgésico y antipirético",
+    fecha_compra: "2023-07-25",
+    cantidad: 100,
+    proveedor: "Farmacias XYZ"
+  },
+  {
+    id: 3,
+    nombre: "Omeprazol 20 mg",
+    descripcion: "Antiácido y protector gástrico",
+    fecha_compra: "2023-08-03",
+    cantidad: 50,
+    proveedor: "Distribuciones Saludables"
+  },
+  {
+    id: 4,
+    nombre: "Insulina Lantus",
+    descripcion: "Para el tratamiento de la diabetes",
+    fecha_compra: "2023-07-10",
+    cantidad: 30,
+    proveedor: "Farmacias DiabetesCare"
+  },
+  {
+    id: 5,
+    nombre: "Ibuprofeno 400 mg",
+    descripcion: "Antiinflamatorio y analgésico",
+    fecha_compra: "2023-08-05",
+    cantidad: 80,
+    proveedor: "Farmacias SaludTotal"
+  }
+])
 
 use("mongo_zoo");
 db.createCollection("zonas", {
@@ -195,19 +437,19 @@ db.createCollection("zonas", {
       properties: {
         id: {
           bsonType: "int",
-          description: "el tipo de dato no es correcto"
+          description: "el tipo es dato incorrecto"
         },
         nombre: {
           bsonType: "string",
-          description: "Dato incorrecto incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          description: "el tipo es dato incorrecto",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$"
         }, clasificacion: {
           bsonType: "string",
-          description: "dato es incorrecto"
+          description: "el tipo es dato incorrecto"
         },
         descripcion: {
           bsonType: "string",
-          description: "el dato es icorrecto",
+          description: "el tipo es dato incorrecto",
         },
         dimension: {
           bsonType: "object",
@@ -215,11 +457,11 @@ db.createCollection("zonas", {
           properties: {
             ancho: {
               bsonType: "number",
-              description: "dato incorrecto",
+              description: "el tipo es dato incorrecto",
             },
             largo: {
               bsonType: "number",
-              description: "dato incorrecto",
+              description: "el tipo es dato incorrecto",
             },
           },
         },
@@ -228,9 +470,52 @@ db.createCollection("zonas", {
   },
 });
 
+use("mongo_zoo")
+db.zonas.insertMany([
+  {
+    id: 1,
+    nombre: "Zona de Carnivoros",
+    clasificacion: "Clasificacion A - Alto riesgo",
+    descripcion : "Zona de alto riesgo para los visitantes",
+    dimension: {
+      ancho: 25,
+      largo: 12
+    }
+  },
+  {
+    id: 2,
+    nombre: "Acuario Marino",
+    clasificacion: "Clasificación A - Alto riesgo",
+    descripcion: "Zona submarina con tiburones y peces tropicales",
+    dimension: {
+      ancho: 60,
+      largo: 30
+    }
+  },
+  {
+    id: 2,
+    nombre: "Zona de aves",
+    clasificacion: "Clasificación C - Bajo riesgo",
+    descripcion: "Zona de de aves con tucanes",
+    dimension: {
+      ancho: 100,
+      largo: 70
+    }
+  },
+  {
+    id: 5,
+    nombre: "Zona de camping",
+    clasificacion: "Clasificación C - Bajo riesgo",
+    descripcion: "Zona de camping para los visitantes",
+    dimension: {
+      ancho: 80,
+      largo: 50
+    }
+  }
+])
+
 use("mongo_zoo");
 db.createCollection("taquilla", {
-
   validator: {
     $jsonSchema: {
       bsonType: "object",
@@ -239,19 +524,19 @@ db.createCollection("taquilla", {
       properties: {
         id: {
           bsonType: "int",
-          description: "el tipo de dato no es correcto"
+          description: "el tipo es dato incorrecto"
         }, cedula: {
           bsonType: "number",
-          description: "el tipo de dato es incorrecto"
+          description: "el tipo es dato incorrecto"
         },
         nombre: {
           bsonType: "string",
-          description: "El tipo de dato es incorrecto",
+          description: "el tipo es dato incorrecto",
           pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
         },
         telefono: {
           bsonType: "number",
-          description: "el tipo de dato es incorrecto",
+          description: "el tipo es dato incorrecto",
         },
         fecha_ingreso: {
           bsonType: "string",
@@ -269,11 +554,70 @@ db.createCollection("taquilla", {
             },
             precio: {
               bsonType: "number",
-              description: "el dato es incorrecto"
+              description: "el tipo es dato incorrecto"
             }
           }
         }
       }
     }
   }
-})
+}) 
+
+use("mongo_zoo")
+db.taquilla.insertMany([
+  {
+    id: 1,
+    cedula: 110231231,
+    nombre: "Maria Camila Prieto",
+    telefono: "+301 3252154775",
+    fecha_ingreso: "2023-08-24",
+    categoria: {
+      tipo: "basico",
+      precio: 120000
+    }
+  },
+  {
+    id: 2,
+    cedula: 110231231,
+    nombre: "Juan Carlos Gómez",
+    telefono: "+301 3009876543",
+    fecha_ingreso: "2023-08-22",
+    categoria: {
+      tipo: "vip",
+      precio: 250000
+    }
+  },
+  {
+    id: 3,
+    cedula: 130987456,
+    nombre: "Ana Rodríguez",
+    telefono: "",
+    fecha_ingreso: "2023-08-25",
+    categoria: {
+      tipo: "basico",
+      precio: 150000
+    }
+  },
+  {
+    id: 4,
+    cedula: 190765432,
+    nombre: "",
+    telefono: "+301 3219876543",
+    fecha_ingreso: "2023-08-20",
+    categoria: {
+      tipo: "vip",
+      precio: 250000
+    }
+  },
+  {
+    id: 4,
+    cedula: 180654321,
+    nombre: "Luisa Pérez",
+    telefono: "+301 3012345678",
+    fecha_ingreso: "2023-08-28",
+    categoria: {
+      tipo: "",
+      precio: 150000
+    }
+  }
+])
