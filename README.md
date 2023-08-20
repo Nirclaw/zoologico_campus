@@ -8,7 +8,6 @@ Nuestro objetivo es brindarte una experiencia educativa única al conectar la vi
 
 Mediante programas educativos integrales y exhibiciones multidisciplinarias, celebramos tanto la biodiversidad como la riqueza cultural, al tiempo que promovemos la sensibilización y la conservación. Únete a nosotros en este emocionante viaje de aprendizaje, donde la tecnología se combina con la naturaleza y la historia para ofrecerte una experiencia inmersiva única. ¡Bienvenido a nuestro proyecto de zoológico virtual!
 
-![](https://raw.githubusercontent.com/Nirclaw/zoologico_campus/main/img/Screenshot_from_2023-08-09_07-52-20.png)
 
 ## Objetivos y Alcances
 
@@ -72,3 +71,5 @@ El desarrollo del sistema utilizará las siguientes librerías:
 - typescript
 
 El sistema será desarrollado en TypeScript y seguirá una estructura de código organizada y mantenible. Se implementarán las funcionalidades requeridas, incluyendo la validación de entrada, el manejo de JWT provisional y la gestión de errores personalizados. Además, se aplicarán las buenas prácticas de desarrollo y seguridad para garantizar el correcto funcionamiento del sistema de gestión del zoológico.
+
+asd
