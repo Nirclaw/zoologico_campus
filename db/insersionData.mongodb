@@ -29,7 +29,7 @@ db.animales.insertMany(
       edad: 18,
       tipo_alimentacion: "carne",
       sexo: "macho",
-      altura: "1.43",
+      altura: 1.43,
       peso: "54 kilos",
       zona: "Zona de carnivoros",
       habitat: "Sabana",
@@ -42,7 +42,7 @@ db.animales.insertMany(
       edad: 35,
       tipo_alimentacion: "plantas",
       sexo: "hembra",
-      altura: "3.2",
+      altura: 3.2,
       peso: "4500 kilos",
       zona: "Zona de herbívoros",
       habitat: "Sabana y bosques",
@@ -55,7 +55,7 @@ db.animales.insertMany(
       edad: 25,
       tipo_alimentacion: "plantas",
       sexo: "macho",
-      altura: "3.8",
+      altura: 3.8,
       peso: "4100 kilos",
       zona: "Zona de herbívoros",
       habitat: "Sabana y bosques",
@@ -68,7 +68,7 @@ db.animales.insertMany(
       edad: 10,
       tipo_alimentacion: "carne",
       sexo: "macho",
-      altura: "1.89",
+      altura: 1.89,
       peso: "250 kilos",
       zona: "Zona de carnívoros",
       habitat: "Selvas y manglares",
@@ -81,7 +81,7 @@ db.animales.insertMany(
       edad: 7,
       tipo_alimentacion: "frutas",
       sexo: "hembra",
-      altura: "1.5",
+      altura: 1.5,
       peso: "400 kilos",
       zona: "Zona de herbívoros",
       habitat: "Llanuras y sabanas",
@@ -94,7 +94,7 @@ db.animales.insertMany(
       edad: 9,
       tipo_alimentacion: "plantas",
       sexo: "hembra",
-      altura: "5.5",
+      altura: 5.5,
       peso: "1200 kilos",
       zona: "Zona de herbívoros",
       habitat: "Savanas y bosques abiertos",
@@ -107,7 +107,7 @@ db.animales.insertMany(
       edad: 6,
       tipo_alimentacion: "carne",
       sexo: "macho",
-      altura: "0.75",
+      altura: 0.75,
       peso: "40 kilos",
       zona: "Zona de carnívoros",
       habitat: "Bosques y montañas",
@@ -120,7 +120,7 @@ db.animales.insertMany(
       edad: 20,
       tipo_alimentacion: "plantas",
       sexo: "macho",
-      altura: "1.5",
+      altura: 1.5,
       peso: "1800 kilos",
       zona: "Zona de herbívoros acuáticos",
       habitat: "Ríos y lagos de África",
@@ -133,7 +133,7 @@ db.animales.insertMany(
       edad: 20,
       tipo_alimentacion: "plantas",
       sexo: "hembra",
-      altura: "1.5",
+      altura: 1.5,
       peso: "1600 kilos",
       zona: "Zona de herbívoros acuáticos",
       habitat: "Ríos y lagos de África",
@@ -221,7 +221,7 @@ function siguienteID(coleccion) {
 }
 
 use("mongo_zoo");
-db.insumos.insertOne(
+db.insumos.insertMany(
   [
     {
       id: Number(siguienteID("insumos")),
@@ -278,7 +278,7 @@ function siguienteID(coleccion) {
 }
 
 use("mongo_zoo");
-db.zonas.insertOne(
+db.zonas.insertMany(
   [
     {
       id: Number(siguienteID("zonas")),
@@ -335,7 +335,7 @@ function siguienteID(coleccion) {
 }
 
 use("mongo_zoo");
-db.taquilla.insertOne(
+db.taquilla.insertMany(
   [
     {
       id: Number(siguienteID("taquilla")),
