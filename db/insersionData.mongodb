@@ -1,0 +1,119 @@
+//insert a la coleccion contador 
+use("mongo_zoo");
+db.contador.insertMany([
+    { id: "animales", contador_valor: 0 },
+    { id: "cliente", contador_valor: 0 },
+    { id: "empleados", contador_valor: 0 },
+    { id: "insumos", contador_valor: 0 },
+    { id: "zonas", contador_valor: 0 }, 
+    { id: "taquilla", contador_valor: 0 },
+]);
+
+
+//insercion de a la coleccion animales
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+db.animales.insertOne({
+  id: Number(siguienteID("animales")),
+  nombre: "Leon",
+  especie: "Panthera leo",
+  edad: 18,
+  tipo_alimentacion: "carne",
+  sexo: "macho",
+  altura: 13,
+  peso: 54,
+  zona: "Zona de carnivoros",
+  habitat: "Sabana",
+  historial_medico: "Llega en buen estado de salud",
+});
+//insert a la coleccion empleados
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+use("mongo_zoo");
+db.empleados.insertOne({
+  id: Number(siguienteID("empleados")),
+  cedula: 1,
+  nombre: "Nicolas caicedo",
+  departamento: "Sistemas",
+  cargo: "JEfe",
+  telefono: 1,
+  correo_electronico: "a@g.a",
+  direccion: "Calle 58 # 12 - 45 Bucaramanga, Santander",
+});
+//inser a la coleccion cliente
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+use("mongo_zoo");
+db.insumos.insertOne({
+  id: Number(siguienteID("insumos")),
+  nombre: "a a ",
+  descripcion: "a a a ",
+  fecha_compra: "2023-08-12",
+  cantidad: 20,
+  proveedor: " a a a ",
+});
+
+//inser a la coleccion zonas
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+use("mongo_zoo");
+db.zonas.insertOne({
+    id: Number(siguienteID("zonas")),
+    nombre: "Zona de Carnivoros",
+    clasificacion: "Clasificacion A - Alto riesgo",
+    descripcion : "Zona de alto riesgo para los visitantes",
+    dimension: {
+      ancho: 25,
+      largo: 12
+    }
+});
+// insert a la coleccion taquilla
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+use("mongo_zoo");
+db.taquilla.insertOne({
+    id: Number(siguienteID("taquilla")),
+    cedula: 110231231,
+    nombre: "Maria Camila Prieto",
+    telefono: "+301 3252154775",
+    fecha_ingreso: "2023-08-24",
+    categoria: {
+      tipo: "basico",
+      precio: 120000
+    }
+});
