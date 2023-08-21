@@ -1,7 +1,6 @@
 use("mongo_zoo");
 db.createCollection("contador");
 
-
 use("mongo_zoo");
 db.createCollection("animales", {
   validator: {
@@ -127,60 +126,6 @@ db.createCollection("empleados", {
   }
 });
 
-use("mongo_zoo")
-db.empleados.insertMany([
-  {
-    id: 1,
-    cedula: 110231923,
-    nombre: "Katherin Parra",
-    telefono: "+57 3202514581",
-    direccion : "Calle 58 # 12 - 45 Bucaramanga, Santander",
-    correo_electronico: "Katherin@gmail.com",
-    departamento: "Sistemas",
-    cargo: "Jefe en departamento de sistemas"
-  },
-  {
-    id: 2,
-    cedula: 210456789,
-    nombre: "Juan Pérez",
-    telefono: "+57 3101234567",
-    direccion: "Avenida 5 # 23 - 67 Medellín, Antioquia",
-    correo_electronico: "juan.perez@email.com",
-    departamento: "Recursos Humanos",
-    cargo: "Especialista en Contratación"
-  },
-  {
-    id: 3,
-    cedula: 123789456,
-    nombre: "Laura Rodríguez",
-    telefono: "+57 3159876543",
-    direccion: "Carrera 12 # 34 - 56 Bogotá, D.C.",
-    correo_electronico: "laura.rodriguez@email.com",
-    departamento: "Finanzas",
-    cargo: "Contadora Principal"
-  },
-  {
-    id: 4,
-    cedula: 987654321,
-    nombre: "Carlos Gómez",
-    telefono: "+57 3007654321",
-    direccion: "Calle 7 # 45 - 22 Barranquilla, Atlántico",
-    correo_electronico: "carlos.gomez@email.com",
-    departamento: "Administración",
-    cargo: "Asistente Administrativo"
-  },
-  {
-    id: 5,
-    cedula: 789123456,
-    nombre: "María López",
-    telefono: "+57 3109871234",
-    direccion: "Avenida 2 # 10 - 15 Cali, Valle del Cauca",
-    correo_electronico: "maria.lopez@email.com",
-    departamento: "Marketing",
-    cargo: "Especialista en Estrategia de Marketing"
-  }
-])
-
 use("mongo_zoo");
 db.createCollection("insumos", {
   validator: {
@@ -226,50 +171,6 @@ db.createCollection("insumos", {
     },
   },
 });
-
-use("mongo_zoo")
-db.insumos.insertMany([
-  {
-    id: 1,
-    nombre: "Azitromicina",
-    descripcion: "Azitromicina para animales",
-    fecha_compra: "2023-08-12",
-    cantidad: 20,
-    proveedor: "NexGard"
-  },
-  {
-    id: 2,
-    nombre: "Paracetamol 500 mg",
-    descripcion: "Analgésico y antipirético",
-    fecha_compra: "2023-07-25",
-    cantidad: 100,
-    proveedor: "Farmacias XYZ"
-  },
-  {
-    id: 3,
-    nombre: "Omeprazol 20 mg",
-    descripcion: "Antiácido y protector gástrico",
-    fecha_compra: "2023-08-03",
-    cantidad: 50,
-    proveedor: "Distribuciones Saludables"
-  },
-  {
-    id: 4,
-    nombre: "Insulina Lantus",
-    descripcion: "Para el tratamiento de la diabetes",
-    fecha_compra: "2023-07-10",
-    cantidad: 30,
-    proveedor: "Farmacias DiabetesCare"
-  },
-  {
-    id: 5,
-    nombre: "Ibuprofeno 400 mg",
-    descripcion: "Antiinflamatorio y analgésico",
-    fecha_compra: "2023-08-05",
-    cantidad: 80,
-    proveedor: "Farmacias SaludTotal"
-  }
-])
 
 use("mongo_zoo");
 db.createCollection("zonas", {
@@ -321,50 +222,6 @@ db.createCollection("zonas", {
   },
 });
 
-use("mongo_zoo")
-db.zonas.insertMany([
-  {
-    id: 1,
-    nombre: "Zona de Carnivoros",
-    clasificacion: "Clasificacion A - Alto riesgo",
-    descripcion : "Zona de alto riesgo para los visitantes",
-    dimension: {
-      ancho: 25,
-      largo: 12
-    }
-  },
-  {
-    id: 2,
-    nombre: "Acuario Marino",
-    clasificacion: "Clasificación A - Alto riesgo",
-    descripcion: "Zona submarina con tiburones y peces tropicales",
-    dimension: {
-      ancho: 60,
-      largo: 30
-    }
-  },
-  {
-    id: 2,
-    nombre: "Zona de aves",
-    clasificacion: "Clasificación C - Bajo riesgo",
-    descripcion: "Zona de de aves con tucanes",
-    dimension: {
-      ancho: 100,
-      largo: 70
-    }
-  },
-  {
-    id: 5,
-    nombre: "Zona de camping",
-    clasificacion: "Clasificación C - Bajo riesgo",
-    descripcion: "Zona de camping para los visitantes",
-    dimension: {
-      ancho: 80,
-      largo: 50
-    }
-  }
-])
-
 use("mongo_zoo");
 db.createCollection("taquilla", {
   validator: {
@@ -413,62 +270,3 @@ db.createCollection("taquilla", {
     }
   }
 }) 
-
-use("mongo_zoo")
-db.taquilla.insertMany([
-  {
-    id: 1,
-    cedula: 110231231,
-    nombre: "Maria Camila Prieto",
-    telefono: "+301 3252154775",
-    fecha_ingreso: "2023-08-24",
-    categoria: {
-      tipo: "basico",
-      precio: 120000
-    }
-  },
-  {
-    id: 2,
-    cedula: 110231231,
-    nombre: "Juan Carlos Gómez",
-    telefono: "+301 3009876543",
-    fecha_ingreso: "2023-08-22",
-    categoria: {
-      tipo: "vip",
-      precio: 250000
-    }
-  },
-  {
-    id: 3,
-    cedula: 130987456,
-    nombre: "Ana Rodríguez",
-    telefono: "",
-    fecha_ingreso: "2023-08-25",
-    categoria: {
-      tipo: "basico",
-      precio: 150000
-    }
-  },
-  {
-    id: 4,
-    cedula: 190765432,
-    nombre: "",
-    telefono: "+301 3219876543",
-    fecha_ingreso: "2023-08-20",
-    categoria: {
-      tipo: "vip",
-      precio: 250000
-    }
-  },
-  {
-    id: 4,
-    cedula: 180654321,
-    nombre: "Luisa Pérez",
-    telefono: "+301 3012345678",
-    fecha_ingreso: "2023-08-28",
-    categoria: {
-      tipo: "",
-      precio: 150000
-    }
-  }
-])
