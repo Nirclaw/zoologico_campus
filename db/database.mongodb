@@ -47,11 +47,11 @@ db.createCollection("animales", {
           description: "Debe ser macho o hembra",
         },
         altura: {
-          bsonType: "number",
+          bsonType: "double",
           description: "el dato es incorrecto"
         },
         peso: {
-          bsonType: "number",
+          bsonType: "string",
           description: "el dato es incorrecto",
         },
         zona: {
@@ -111,7 +111,7 @@ db.createCollection("empleados", {
           description: "El tipo de dato es incorrecto",
         },
         telefono: {
-          bsonType: "int",
+          bsonType: "string",
           description: "el tipo de dato es incorrecto",
         },
         correo_electronico: {
