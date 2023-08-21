@@ -1,10 +1,6 @@
 use("mongo_zoo");
 db.createCollection("contador");
-db.contador.insertMany([
-  { id: "clienteID", contador_valor: 0 },
-  { id: "animalesID", contador_valor: 0 },
-  { id: "empleadosID", contador_valor: 0 }, { id: "zonasID", contador_valor: 0 }, {}
-]);
+
 
 use("mongo_zoo");
 db.createCollection("animales", {
@@ -12,14 +8,13 @@ db.createCollection("animales", {
     $jsonSchema: {
       bsonType: "object",
       title: "animales",
-      required: [
-        "id",
-        "nombre",
-        "especie",
-        "edad",
+      required: ["id",
+      "nombre",
+      "especie",
+      "edad",
         "sexo",
         "tipo_alimentacion",
-        "tamano",
+        "altura",
         "peso",
         "zona",
         "habitat",
@@ -27,13 +22,13 @@ db.createCollection("animales", {
       ],
       properties: {
         id: {
-          bsonType: "number",
-          description: "el tipo de dato es incorrecto",
+          bsonType: "int",
+          description: "dato incorrecto", 
         },
         nombre: {
           bsonType: "string",
           description: "Dato incorrecto incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
         },
         especie: {
           bsonType: "string",
@@ -42,7 +37,6 @@ db.createCollection("animales", {
         edad: {
           bsonType: "number",
           description: "Dato incorrecto",
-          pattern: "^(?:100|[1-9][0-9]?)$",
         },
         tipo_alimentacion: {
           enum: ["plantas", "carne", "inseptos", "frutas"], 
@@ -77,153 +71,6 @@ db.createCollection("animales", {
   },
 });
 
-use("mongo_zoo")
-db.animales.insertMany([
-  {
-    id: 1,
-    nombre: "Leon",
-    especie: "Panthera leo",
-    edad: 18,
-    tipo_alimentacion : "Carne",
-    sexo: "Macho",
-    altura: "1.43",
-    peso: "54 kilos",
-    zona: "Zona de carnivoros",
-    habitat: "Sabana",
-    historial_medico: "Llega en buen estado de salud"
-  },
-  {
-    id: 2,
-    nombre: "Elefante Africano",
-    especie: "Loxodonta africana",
-    edad: 35,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Hembra",
-    altura: "3.2 metros",
-    peso: "4500 kilos",
-    zona: "Zona de herbívoros",
-    habitat: "Sabana y bosques",
-    historial_medico: "Tratamiento para una lesión en la pata delantera derecha."
-  },
-  {
-    id: 2,
-    nombre: "Elefante Africano",
-    especie: "Loxodonta africana",
-    edad: 35,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Hembra",
-    altura: "3.2 metros",
-    peso: "4500 kilos",
-    zona: "Zona de herbívoros",
-    habitat: "Sabana y bosques",
-    historial_medico: "Tratamiento para una lesión en la pata delantera derecha."
-  },
-  {
-    id: 3,
-    nombre: "Tigre de Bengala",
-    especie: "Panthera tigris tigris",
-    edad: 10,
-    tipo_alimentacion: "Carnívoro",
-    sexo: "Macho",
-    altura: "1.1 metros",
-    peso: "250 kilos",
-    zona: "Zona de carnívoros",
-    habitat: "Selvas y manglares",
-    historial_medico: "Control regular de salud; en buen estado."
-  },
-  {
-    id: 4,
-    nombre: "Cebra de Grevy",
-    especie: "Equus grevyi",
-    edad: 7,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Hembra",
-    altura: "1.5 metros",
-    peso: "400 kilos",
-    zona: "Zona de herbívoros",
-    habitat: "Llanuras y sabanas",
-    historial_medico: "Recuperándose de una lesión en la pierna."
-  },
-  {
-    id: 5,
-    nombre: "Girafa Masai",
-    especie: "Giraffa tippelskirchi",
-    edad: 9,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Hembra",
-    altura: "5.5 metros",
-    peso: "1200 kilos",
-    zona: "Zona de herbívoros",
-    habitat: "Savanas y bosques abiertos",
-    historial_medico: "Recuperándose de una pequeña herida en el cuello."
-  },
-  {
-    id: 6,
-    nombre: "Lobo Gris",
-    especie: "Canis lupus",
-    edad: 6,
-    tipo_alimentacion: "Carnívoro",
-    sexo: "Macho",
-    altura: "0.75 metros",
-    peso: "40 kilos",
-    zona: "Zona de carnívoros",
-    habitat: "Bosques y montañas",
-    historial_medico: "En buen estado de salud, se le realiza seguimiento regular."
-  },
-  {
-    id: 7,
-    nombre: "Hipopótamo Común",
-    especie: "Hippopotamus amphibius",
-    edad: 20,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Macho",
-    altura: "1.5 metros",
-    peso: "1800 kilos",
-    zona: "Zona de herbívoros acuáticos",
-    habitat: "Ríos y lagos de África",
-    historial_medico: "Recientemente tratado por una infección en la piel."
-  },
-  {
-    id: 8,
-    nombre: "Hipopótamo Común",
-    especie: "Hippopotamus amphibius",
-    edad: 20,
-    tipo_alimentacion: "Herbívoro",
-    sexo: "Macho",
-    altura: "1.5 metros",
-    peso: "1800 kilos",
-    zona: "Zona de herbívoros acuáticos",
-    habitat: "Ríos y lagos de África",
-    historial_medico: "Recientemente tratado por una infección en la piel."
-  },
-  {
-    id: 9,
-    nombre: "Cocodrilo del Nilo",
-    especie: "Crocodylus niloticus",
-    edad: 30,
-    tipo_alimentacion: "Carnívoro",
-    sexo: "Hembra",
-    altura: "1.7 metros",
-    peso: "400 kilos",
-    zona: "Zona de reptiles acuáticos",
-    habitat: "Ríos y lagos de África",
-    historial_medico: "En buen estado de salud, se le realiza seguimiento regular."
-  },
-  {
-    id: 10,
-    nombre: "Águila Calva",
-    especie: "Haliaeetus leucocephalus",
-    edad: 12,
-    tipo_alimentacion: "Carnívoro",
-    sexo: "Macho",
-    altura: "0.9 metros",
-    peso: "4 kilos",
-    zona: "Zona de aves rapaces",
-    habitat: "Bosques y áreas costeras de América del Norte",
-    historial_medico: "En excelente estado de salud, símbolo nacional de los Estados Unidos."
-  }
-])
-
 use("mongo_zoo");
 db.createCollection("empleados", {
   validator: {
@@ -242,36 +89,34 @@ db.createCollection("empleados", {
       ],
       properties: {
         id: {
-          bsonType: "number",
+          bsonType: "int",
           description: "el tipo es dato incorrecto",
         },
         cedula: {
-          bsonType: "number",
+          bsonType: "int",
           description: "el tipo de dato es incorrecto"
         },
         nombre: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
         },
         departamento: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
         cargo: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
         },
         telefono: {
-          bsonType: "number",
+          bsonType: "int",
           description: "el tipo de dato es incorrecto",
         },
         correo_electronico: {
           bsonType: "string",
           description: "El tipo de dato no es correcto",
-          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
         },
         direccion: {
           bsonType: "string",
@@ -358,7 +203,7 @@ db.createCollection("insumos", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
         },
         descripcion: {
           bsonType: "string",
@@ -367,7 +212,6 @@ db.createCollection("insumos", {
         fecha_compra: {
           bsonType: "string",
           description: "la fecha debe ser YYYY-MM-DD",
-          pattern: "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
         },
         cantidad: {
           bsonType: "number",
@@ -376,7 +220,7 @@ db.createCollection("insumos", {
         proveedor: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
         },
       },
     },
@@ -433,7 +277,14 @@ db.createCollection("zonas", {
     $jsonSchema: {
       bsonType: "object",
       title: "Zonas",
-      required: ["id", "nombre", "descripcion", "clasificacion", "dimension"],
+      required: 
+      [
+      "id", 
+      "nombre", 
+      "descripcion", 
+      "clasificacion", 
+      "dimension"
+      ],
       properties: {
         id: {
           bsonType: "int",
@@ -442,7 +293,7 @@ db.createCollection("zonas", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$"
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$"
         }, clasificacion: {
           bsonType: "string",
           description: "el tipo es dato incorrecto"
