@@ -104,7 +104,7 @@ db.createCollection("empleados", {
         departamento: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
         },
         cargo: {
           bsonType: "string",
