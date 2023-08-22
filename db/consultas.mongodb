@@ -1,0 +1,103 @@
+// Listar animales por alimentacion
+use("mongo_zoo");
+db.animales.aggregate([
+    {
+        $match: {
+            tipo_alimentacion: "carne"
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar animales por habitat
+use("mongo_zoo");
+db.animales.aggregate([
+    {
+        $match: {
+            habitat: /Bosque/
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar animales por nombre
+use("mongo_zoo");
+db.animales.aggregate([
+    {
+        $match: {
+            nombre: /Elefante/
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar todos los animales
+use("mongo_zoo");
+db.animales.aggregate([
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar empleados por cedula
+use("mongo_zoo");
+db.empleados.aggregate([
+    {
+        $match: {
+            cedula: 110231923
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar empleados por nombre
+use("mongo_zoo");
+db.empleados.aggregate([
+    {
+        $match: {
+            nombre: /Gómez/
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]);
+
+// Listar empleados por cargo
+use("mongo_zoo");
+db.empleados.aggregate([
+    {
+        $match: {
+            cargo: /departamento/
+        }
+    },
+    {
+        $project: {
+            _id: 0
+        }
+    }
+]); 
+
+// Listar todos los empleados
+use("mongo_zoo");
+db.empleados.aggregate(); 
