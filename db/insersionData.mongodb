@@ -2,7 +2,6 @@
 use("mongo_zoo");
 db.contador.insertMany([
     { id: "animales", contador_valor: 0 },
-    { id: "cliente", contador_valor: 0 },
     { id: "empleados", contador_valor: 0 },
     { id: "insumos", contador_valor: 0 },
     { id: "zonas", contador_valor: 0 }, 
