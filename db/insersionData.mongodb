@@ -362,7 +362,7 @@ db.taquilla.insertMany(
       id: Number(siguienteID("taquilla")),
       cedula: 130987456,
       nombre: "Ana Rodríguez",
-      telefono: "",
+      telefono: "301 3009876543",
       fecha_ingreso: "2023-08-25",
       categoria: {
         tipo: "basico",
@@ -372,7 +372,7 @@ db.taquilla.insertMany(
     {
       id: Number(siguienteID("taquilla")),
       cedula: 190765432,
-      nombre: "",
+      nombre: "Ana Rodríguez",
       telefono: "+301 3219876543",
       fecha_ingreso: "2023-08-20",
       categoria: {
@@ -387,7 +387,7 @@ db.taquilla.insertMany(
       telefono: "+301 3012345678",
       fecha_ingreso: "2023-08-28",
       categoria: {
-        tipo: "",
+        tipo: "basico",
         precio: 150000
       }
     }

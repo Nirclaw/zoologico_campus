@@ -27,7 +27,7 @@ db.createCollection("animales", {
         nombre: {
           bsonType: "string",
           description: "Dato incorrecto incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
         especie: {
           bsonType: "string",
@@ -98,12 +98,12 @@ db.createCollection("empleados", {
         nombre: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
         departamento: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
         cargo: {
           bsonType: "string",
@@ -148,7 +148,7 @@ db.createCollection("insumos", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
         descripcion: {
           bsonType: "string",
@@ -165,7 +165,7 @@ db.createCollection("insumos", {
         proveedor: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
         },
       },
     },
@@ -194,7 +194,7 @@ db.createCollection("zonas", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+)*$"
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
         }, clasificacion: {
           bsonType: "string",
           description: "el tipo es dato incorrecto"
@@ -240,17 +240,14 @@ db.createCollection("taquilla", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑs]*$",
         },
         telefono: {
-          bsonType: "number",
+          bsonType: "string",
           description: "el tipo es dato incorrecto",
         },
         fecha_ingreso: {
           bsonType: "string",
           description: "la fecha debe ser YYYY-MM-DD",
-          pattern:
-            "/^(?:(?:19|20)dd)-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$/",
         },
         categoria: {
           bsonType: "object",
