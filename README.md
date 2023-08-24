@@ -98,9 +98,9 @@ Este proyecto tiene como objetivo desarrollar un sistema de gestión para un zoo
 
 - ##### REGISTRO DE EMPLEADOS
 
-  - Id "int" auto-incrementable
-
   - Cedula "int"
+
+  - Contraseña
 
   - Nombre "string"
 
@@ -113,6 +113,9 @@ Este proyecto tiene como objetivo desarrollar un sistema de gestión para un zoo
   - Departamento "string"
 
   - Cargo "string"
+
+    - Rol: "Admin-root, admin, user" 
+    - Permisos "'user': get, 'admin': get, post put, 'admin-root': *"
 
     
 
