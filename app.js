@@ -6,9 +6,11 @@ import appEmpleados from './routers/empleados.js';
 import appInsumos from './routers/insumos.js';
 import appTaquillas from './routers/taquilla.js';
 import appZonas from './routers/zonas.js';
+import appLogin from './login/login.js';
 
 let app = express();
 app.use(express.json());
+app.use("/login",appLogin)
 
 app.use("/animales", appAnimales);
 app.use("/empleados", appEmpleados);
