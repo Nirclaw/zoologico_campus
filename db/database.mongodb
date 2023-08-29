@@ -7,10 +7,11 @@ db.createCollection("animales", {
     $jsonSchema: {
       bsonType: "object",
       title: "animales",
-      required: ["id",
-      "nombre",
-      "especie",
-      "edad",
+      required: [
+        "id",
+        "nombre",
+        "especie",
+        "edad",
         "sexo",
         "tipo_alimentacion",
         "altura",
@@ -22,12 +23,12 @@ db.createCollection("animales", {
       properties: {
         id: {
           bsonType: "int",
-          description: "dato incorrecto", 
+          description: "dato incorrecto",
         },
         nombre: {
           bsonType: "string",
           description: "Dato incorrecto incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
         },
         especie: {
           bsonType: "string",
@@ -38,8 +39,8 @@ db.createCollection("animales", {
           description: "Dato incorrecto",
         },
         tipo_alimentacion: {
-          enum: ["plantas", "carne", "inseptos", "frutas"], 
-          description: "plantas o carne o inseptos o frutas"
+          enum: ["plantas", "carne", "inseptos", "frutas"],
+          description: "plantas o carne o inseptos o frutas",
         },
         sexo: {
           enum: ["macho", "hembra"],
@@ -47,7 +48,7 @@ db.createCollection("animales", {
         },
         altura: {
           bsonType: "double",
-          description: "el dato es incorrecto"
+          description: "el dato es incorrecto",
         },
         peso: {
           bsonType: "string",
@@ -84,7 +85,7 @@ db.createCollection("empleados", {
         "cargo",
         "telefono",
         "correo_electronico",
-        "direccion"
+        "direccion",
       ],
       properties: {
         id: {
@@ -93,17 +94,17 @@ db.createCollection("empleados", {
         },
         cedula: {
           bsonType: "int",
-          description: "el tipo de dato es incorrecto"
+          description: "el tipo de dato es incorrecto",
         },
         nombre: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
         },
         departamento: {
           bsonType: "string",
           description: "El tipo de dato es incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
         },
         cargo: {
           bsonType: "string",
@@ -119,11 +120,11 @@ db.createCollection("empleados", {
         },
         direccion: {
           bsonType: "string",
-          description: "el tipo de dato no es correcto"
-        }
-      }
-    }
-  }
+          description: "el tipo de dato no es correcto",
+        },
+      },
+    },
+  },
 });
 
 use("mongo_zoo");
@@ -148,11 +149,11 @@ db.createCollection("insumos", {
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
         },
         descripcion: {
           bsonType: "string",
-          description: "el tipo es dato incorrecto"
+          description: "el tipo es dato incorrecto",
         },
         fecha_compra: {
           bsonType: "string",
@@ -165,7 +166,7 @@ db.createCollection("insumos", {
         proveedor: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
         },
       },
     },
@@ -178,26 +179,20 @@ db.createCollection("zonas", {
     $jsonSchema: {
       bsonType: "object",
       title: "Zonas",
-      required: 
-      [
-      "id", 
-      "nombre", 
-      "descripcion", 
-      "clasificacion", 
-      "dimension"
-      ],
+      required: ["id", "nombre", "descripcion", "clasificacion", "dimension"],
       properties: {
         id: {
           bsonType: "int",
-          description: "el tipo es dato incorrecto"
+          description: "el tipo es dato incorrecto",
         },
         nombre: {
           bsonType: "string",
           description: "el tipo es dato incorrecto",
-          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
-        }, clasificacion: {
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        clasificacion: {
           bsonType: "string",
-          description: "el tipo es dato incorrecto"
+          description: "el tipo es dato incorrecto",
         },
         descripcion: {
           bsonType: "string",
@@ -228,14 +223,22 @@ db.createCollection("taquilla", {
     $jsonSchema: {
       bsonType: "object",
       title: "taquilla",
-      required: ["id", "cedula", "nombre", "telefono", "fecha_ingreso", "categoria"],
+      required: [
+        "id",
+        "cedula",
+        "nombre",
+        "telefono",
+        "fecha_ingreso",
+        "categoria",
+      ],
       properties: {
         id: {
           bsonType: "int",
-          description: "el tipo es dato incorrecto"
-        }, cedula: {
+          description: "el tipo es dato incorrecto",
+        },
+        cedula: {
           bsonType: "number",
-          description: "el tipo es dato incorrecto"
+          description: "el tipo es dato incorrecto",
         },
         nombre: {
           bsonType: "string",
@@ -255,15 +258,44 @@ db.createCollection("taquilla", {
           properties: {
             tipo: {
               enum: ["basico", "vip"],
-              description: "debe ser basico o vip"
+              description: "debe ser basico o vip",
             },
             precio: {
               bsonType: "number",
-              description: "el tipo es dato incorrecto"
-            }
-          }
-        }
-      }
-    }
-  }
-}) 
+              description: "el tipo es dato incorrecto",
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("roles", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "roles",
+      required: ["user", "password", "rol", "permisos"],
+      properties: {
+        user: {
+          bsonType: "string",
+          description: "el tipo de dato es incorrecto",
+        },
+        password: {
+          bsonType: "string",
+          description: "el tipo de dato es incorrecto",
+        },
+        rol: {
+          enum: ["admin", "user"],
+          description: "debe escoger un rol entre admin,user,root",
+        },
+        permisos: {
+          bsonType: "object",
+          description: "ingrese los persmisos",
+        },
+      },
+    },
+  },
+});
