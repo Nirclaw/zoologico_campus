@@ -1,5 +1,6 @@
-import { SignJWT } from "jose";
+import { SignJWT, jwtVerify } from "jose";
 import { PASSWORD, db } from "../config/variables.js";
+import { ObjectId } from "mongodb";
 
 export const CreateToken = async (req, res) => {
   if (Object.keys(req.body).length === 0)
@@ -28,6 +29,22 @@ export const CreateToken = async (req, res) => {
     .setExpirationTime("3h")
     .sign(encode.encode(PASSWORD));
 
-    const llave = createJTW
-  res.send({llave});
+  const llave = createJTW;
+  res.send({ llave });
+};
+
+export const ValidarToken = async (req, Token) => {
+  try {
+    const encode = new TextEncoder();
+    const jwData = await jwtVerify(Token, encode.encode(PASSWORD));
+
+    let busqueda = await db.collection("roles").findOne({
+      _id: new ObjectId(jwData.payload.id[0]._id),
+      [`permisos.${req.baseUrl}`]: `${req.headers["accept-version"]}`,
+    });
+    let { _id, permisos, ...Usuario } = busqueda;
+    return Usuario;
+  } catch (error) {
+    return false;
+  }
 };
