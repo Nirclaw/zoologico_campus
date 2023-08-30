@@ -1,5 +1,12 @@
 use("mongo_zoo");
 db.createCollection("contador");
+db.contador.insertMany([
+    {ID: "animalesid", sequenceValue: 1},
+    {ID: "empleadosid", sequenceValue: 1},
+    {ID: "insumosid", sequenceValue: 1},
+    {ID: "zonasid", sequenceValue: 1},
+    {ID: "taquillaid", sequenceValue: 1}
+])
 
 use("mongo_zoo");
 db.createCollection("animales", {
