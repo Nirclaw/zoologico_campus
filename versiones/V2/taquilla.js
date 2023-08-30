@@ -22,6 +22,12 @@ export const taquillasDelete = async (req, res) => {
 
 export const taquillaPOSTO = async (req, res) => {
     try {
+      let newID = await autoIncrement("taquilla")
+
+        let data = await user.insertOne({
+            id: newID,
+            ...req.body
+        })
       
       await user.insertOne(req.body);
       
