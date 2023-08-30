@@ -3,6 +3,15 @@ import { autoIncrement } from "../../helpers/autoincrement.js";
 
 let insumos = await db.collection("insumos");
 
+/*
+    {
+        "nombre": "Ibuprofeno 3800 mg",
+        "descripcion": "analgésico",
+        "fecha_compra": "2023-08-05",
+        "cantidad": 80,
+        "proveedor": "SaludTotal"
+    }
+*/
 export const insumosPost = async (req, res) => {
     try {
         let newID = await autoIncrement("insumos")
