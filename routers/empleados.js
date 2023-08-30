@@ -13,7 +13,7 @@ import {
   empleadoPUT,
   empleadosDelete,
 } from "../versiones/V2/empleados.js";
-import { empleadosPOST } from "../middleware/DTO/empleados.js";
+import { empleadoVPUT, empleadosDdelete, empleadosPOST } from "../middleware/DTO/empleados.js";
 const appEmpleados = Router();
 
 appEmpleados.use(limite(), passport.authenticate("bearer", { session: false }));
@@ -51,6 +51,7 @@ appEmpleados.get(
 
 appEmpleados.delete(
   "/delete/:id",
+  empleadosDdelete,
   version({
     "2.0.0": empleadosDelete,
   })
@@ -58,6 +59,7 @@ appEmpleados.delete(
 
 appEmpleados.put(
   "/update/:id",
+  empleadoVPUT,
   version({
     "2.0.0": empleadoPUT,
   })
