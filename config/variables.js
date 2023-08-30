@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { con } from "../conexion/conexion.js";
+import routesVersioning from "express-routes-versioning";
 
 dotenv.config();
 
@@ -9,3 +10,4 @@ export const Adb = process.env.ATLAS_DB;
 export const MyServer = JSON.parse(process.env.SERVER)
 export const PASSWORD = process.env.PASSWORD
 export const db = await con()
+export const version = routesVersioning()
