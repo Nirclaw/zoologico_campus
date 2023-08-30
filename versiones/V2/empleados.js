@@ -1,4 +1,6 @@
+import { validationResult } from "express-validator";
 import { db } from "../../config/variables.js";
+import { autoIncrement } from "../../helpers/autoincrement.js";
 
 let user = await db.collection("empleados");
 
@@ -40,15 +42,18 @@ export const empleadoPUT = async (req, res) => {
 
 export const empleadoPOSTO = async (req, res) => {
   try {
-    let validar = await user.findOne({
-      cedula: parseInt(req.body.cedula),
-    });
-    if (!validar)
-      return res
-        .status(400)
-        .send({ status: 400, message: "el usuario no existe" });
+    const error = validationResult(req);
+      if (!error.isEmpty()) return res.status(400).json({status:400,message:error.errors[0]});
 
-    await user.insertOne(req.body);
+
+
+
+    let newID = await autoIncrement("empleados")
+
+        let data = await user.insertOne({
+            id: newID,
+            ...req.body
+        })
     return res.send(data);
   } catch (error) {
     res.status(400).send({ status: 400, message: error });

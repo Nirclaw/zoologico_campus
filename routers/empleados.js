@@ -13,6 +13,7 @@ import {
   empleadoPUT,
   empleadosDelete,
 } from "../versiones/V2/empleados.js";
+import { empleadosPOST } from "../middleware/DTO/empleados.js";
 const appEmpleados = Router();
 
 appEmpleados.use(limite(), passport.authenticate("bearer", { session: false }));
@@ -63,6 +64,7 @@ appEmpleados.put(
 );
 appEmpleados.post(
   "/create",
+  empleadosPOST,
   version({
     "2.0.0": empleadoPOSTO,
   })
