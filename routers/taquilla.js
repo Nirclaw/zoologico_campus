@@ -8,6 +8,7 @@ import {
   taquillasGet,
 } from "../versiones/V1/taquilla.js";
 import { taquillaPOSTO, taquillasDelete } from "../versiones/V2/taquilla.js";
+import { taquillaDTOdelete, taquillaDTOpost } from "../middleware/DTO/taquilla.js";
 const appTaquillas = Router();
 
 appTaquillas.use(limite(), passport.authenticate("bearer", { session: false }));
@@ -37,7 +38,7 @@ appTaquillas.get(
 );
 
 appTaquillas.delete(
-  "delete/:id",
+  "/delete/:id",taquillaDTOdelete,
   version({
     "2.0.0": taquillasDelete,
   })
@@ -45,6 +46,7 @@ appTaquillas.delete(
 
 appTaquillas.post(
   "/create",
+  taquillaDTOpost,
   version({
     "2.0.0": taquillaPOSTO,
   })
