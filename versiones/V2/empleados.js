@@ -37,3 +37,20 @@ export const empleadoPUT = async (req, res) => {
     res.status(400).send({ status: 400, message: "no se pudo actualizar " });
   }
 };
+
+export const empleadoPOSTO = async (req, res) => {
+  try {
+    let validar = await user.findOne({
+      cedula: parseInt(req.body.cedula),
+    });
+    if (!validar)
+      return res
+        .status(400)
+        .send({ status: 400, message: "el usuario no existe" });
+
+    await user.insertOne(req.body);
+    return res.send(data);
+  } catch (error) {
+    res.status(400).send({ status: 400, message: error });
+  }
+};

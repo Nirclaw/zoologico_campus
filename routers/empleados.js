@@ -8,7 +8,7 @@ import {
   empleadosGet,
 } from "../versiones/V1/empleados.js";
 import { version } from "../config/variables.js";
-import { empleadosDelete } from "../versiones/V2/empleados.js";
+import { empleadoPOSTO, empleadosDelete } from "../versiones/V2/empleados.js";
 const appEmpleados = Router();
 
 appEmpleados.use(limite(), passport.authenticate("bearer", { session: false }));
@@ -55,6 +55,12 @@ appEmpleados.put(
   "/update/:id",
   version({
     "2.0.0": empleadosDelete,
+  })
+);
+appEmpleados.post(
+  "/create",
+  version({
+    "2.0.0": empleadoPOSTO,
   })
 );
 
