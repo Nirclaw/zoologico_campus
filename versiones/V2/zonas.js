@@ -35,7 +35,13 @@ export const zonasPut = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await zonas.updateOne(
+        let consulta = await db.collection("zonas").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await zonas.updateOne(
             { id: id },
             { $set: req.body }
         )
@@ -52,7 +58,13 @@ export const zonasDelete = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await zonas.deleteOne(
+        let consulta = await db.collection("animales").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await zonas.deleteOne(
             { id: id },
         )
             
