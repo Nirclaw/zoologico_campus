@@ -73,7 +73,7 @@ use("mongo_zoo");
 db.empleados.aggregate([
   {
     $match: {
-      nombre: /Gómez/,
+      nombre: /G/,
     },
   },
   {
