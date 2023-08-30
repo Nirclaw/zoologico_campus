@@ -1,22 +1,24 @@
 import { db } from "../../config/variables.js";
 import { autoIncrement } from "../../helpers/autoincrement.js";
 
-let insumos = await db.collection("insumos");
+let zonas = await db.collection("zonas");
 
 /*
     {
-        "nombre": "Ibuprofeno 3800 mg",
-        "descripcion": "analgésico",
-        "fecha_compra": "2023-08-05",
-        "cantidad": 80,
-        "proveedor": "SaludTotal"
+        "nombre": "Zona",
+        "clasificacion": "Clasificación C - Bajo riesgo",
+        "descripcion": "Zona",
+        "dimension": {
+            "ancho": 100,
+            "largo": 70
+        }
     }
 */
-export const insumosPost = async (req, res) => {
+export const zonasPost = async (req, res) => {
     try {
-        let newID = await autoIncrement("insumos")
+        let newID = await autoIncrement("zonas")
 
-        let data = await insumos.insertOne({
+        let data = await zonas.insertOne({
             id: newID,
             ...req.body
         })
@@ -28,12 +30,12 @@ export const insumosPost = async (req, res) => {
     }
 };
 
-export const insumosPut = async (req, res) => {
+export const zonasPut = async (req, res) => {
     try {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await insumos.updateOne(
+        let data = await zonas.updateOne(
             { id: id },
             { $set: req.body }
         )
@@ -45,12 +47,12 @@ export const insumosPut = async (req, res) => {
     }
 };
 
-export const insumosDelete = async (req, res) => {
+export const zonasDelete = async (req, res) => {
     try {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await insumos.deleteOne(
+        let data = await zonas.deleteOne(
             { id: id },
         )
             
