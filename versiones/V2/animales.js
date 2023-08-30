@@ -38,12 +38,18 @@ export const animalsPut = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await animales.updateOne(
+        let consulta = await db.collection("animales").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await animales.updateOne(
             { id: id },
             { $set: req.body }
         )
             
-        res.status(200).send({status: 200, message: "Registro actualizado con exito"});
+        return res.status(200).send({status: 200, message: "Registro actualizado con exito"});
 
     } catch (error) {
       res.status(400).send({ status: 400, message: error });
@@ -55,7 +61,13 @@ export const animalsDelete = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await animales.deleteOne(
+        let consulta = await db.collection("animales").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await animales.deleteOne(
             { id: id },
         )
             

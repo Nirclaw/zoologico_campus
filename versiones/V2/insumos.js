@@ -33,7 +33,13 @@ export const insumosPut = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await insumos.updateOne(
+        let consulta = await db.collection("insumos").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await insumos.updateOne(
             { id: id },
             { $set: req.body }
         )
@@ -50,7 +56,13 @@ export const insumosDelete = async (req, res) => {
         let id = req.params.id
         id = parseInt(id)
 
-        let data = await insumos.deleteOne(
+        let consulta = await db.collection("insumos").findOne(
+            {id: id}
+        )
+
+        if(!consulta) return res.status(200).send({status:400, message: "Este id no existe"})
+
+        await insumos.deleteOne(
             { id: id },
         )
             
