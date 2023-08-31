@@ -3,6 +3,8 @@ import passport from "../jwt/passport.js";
 import { limite } from "../helpers/limit/limit.js";
 import { version } from "../config/variables.js";
 
+import { validateZonasParams, validateZonasBody } from "../middleware/DTO/zonas.js";
+
 import { zonasAll, zonasName } from "../versiones/V1/zonas.js";
 import { zonasPost, zonasPut, zonasDelete } from "../versiones/V2/zonas.js";
 
@@ -22,17 +24,17 @@ appZonas.get("/:nombre", version({
     })
 );
 
-appZonas.post("/", version({
+appZonas.post("/", validateZonasBody, version({
         "2.0.0": zonasPost,
     })
 );
 
-appZonas.put("/:id", version({
+appZonas.put("/:id", validateZonasParams, validateZonasBody, version({
         "2.0.0": zonasPut,
     })
 );
 
-appZonas.delete("/:id", version({
+appZonas.delete("/:id", validateZonasParams, version({
         "2.0.0": zonasDelete,
     })
 );
