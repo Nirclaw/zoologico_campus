@@ -1,5 +1,6 @@
 import { db } from "../../config/variables.js";
 import { autoIncrement } from "../../helpers/autoincrement.js";
+import { validationResult } from "express-validator";
 
 let animales = await db.collection("animales");
 
@@ -19,9 +20,19 @@ let animales = await db.collection("animales");
 */
 export const animalsPost = async (req, res) => {
     try {
+
+        let errors = validationResult(req);
+        let objErrors = []
+
+        errors.errors.forEach((val) => {
+            objErrors.push(val.msg)
+        });
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: objErrors})        
+
         let newID = await autoIncrement("animales")
 
-        let data = await animales.insertOne({
+        await animales.insertOne({
             id: newID,
             ...req.body
         })
@@ -29,12 +40,23 @@ export const animalsPost = async (req, res) => {
         res.status(200).send({status: 200, message: "Registro creado con exito"});
 
     } catch (error) {
-      res.status(400).send({ status: 400, message: error });
+        res.status(400).send({ status: 400, message: error });
     }
 };
 
 export const animalsPut = async (req, res) => {
+    
     try {
+
+        let errors = validationResult(req);
+        let objErrors = []
+
+        errors.errors.forEach((val) => {
+            objErrors.push(val.msg)
+        });
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: objErrors})    
+
         let id = req.params.id
         id = parseInt(id)
 
@@ -58,6 +80,11 @@ export const animalsPut = async (req, res) => {
 
 export const animalsDelete = async (req, res) => {
     try {
+
+        let errors = validationResult(req);
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: errors.errors[0].msg})  
+
         let id = req.params.id
         id = parseInt(id)
 
