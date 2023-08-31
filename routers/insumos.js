@@ -3,6 +3,8 @@ import passport from "../jwt/passport.js";
 import { limite } from "../helpers/limit/limit.js";
 import { version } from "../config/variables.js";
 
+import { validateInsumosParams, validateInsumosBody } from "../middleware/DTO/insumos.js";
+
 import { insumosAll, insumosName } from "../versiones/V1/insumos.js";
 import { insumosPost, insumosPut, insumosDelete } from "../versiones/V2/insumos.js";
 
@@ -22,17 +24,17 @@ appInsumos.get("/nombre/:nombre", version({
     })
 );
 
-appInsumos.post("/", version({
+appInsumos.post("/", validateInsumosBody, version({
         "2.0.0": insumosPost,
     })
 );
 
-appInsumos.put("/:id", version({
+appInsumos.put("/:id", validateInsumosParams, validateInsumosBody, version({
         "2.0.0": insumosPut,
     })
 );
 
-appInsumos.delete("/:id", version({
+appInsumos.delete("/:id", validateInsumosParams, version({
         "2.0.0": insumosDelete,
     })
 );
