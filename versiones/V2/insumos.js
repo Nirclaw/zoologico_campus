@@ -1,5 +1,6 @@
 import { db } from "../../config/variables.js";
 import { autoIncrement } from "../../helpers/autoincrement.js";
+import { validationResult } from "express-validator";
 
 let insumos = await db.collection("insumos");
 
@@ -14,6 +15,16 @@ let insumos = await db.collection("insumos");
 */
 export const insumosPost = async (req, res) => {
     try {
+
+        let errors = validationResult(req);
+        let objErrors = []
+
+        errors.errors.forEach((val) => {
+            objErrors.push(val.msg)
+        });
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: objErrors}) 
+
         let newID = await autoIncrement("insumos")
 
         let data = await insumos.insertOne({
@@ -30,6 +41,16 @@ export const insumosPost = async (req, res) => {
 
 export const insumosPut = async (req, res) => {
     try {
+
+        let errors = validationResult(req);
+        let objErrors = []
+
+        errors.errors.forEach((val) => {
+            objErrors.push(val.msg)
+        });
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: objErrors}) 
+
         let id = req.params.id
         id = parseInt(id)
 
@@ -53,6 +74,11 @@ export const insumosPut = async (req, res) => {
 
 export const insumosDelete = async (req, res) => {
     try {
+
+        let errors = validationResult(req);
+
+        if(!errors.isEmpty()) return res.status(400).json({status: 429, message: errors.errors[0].msg}) 
+
         let id = req.params.id
         id = parseInt(id)
 
