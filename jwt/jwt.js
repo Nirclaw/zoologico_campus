@@ -29,8 +29,8 @@ export const CreateToken = async (req, res) => {
     .setExpirationTime("3h")
     .sign(encode.encode(PASSWORD));
 
-  const llave = createJTW;
-  res.send({ llave });
+    const llave = "Bearer " + createJTW;
+    res.send({status: 200, message: llave});
 };
 
 export const ValidarToken = async (req, Token) => {
