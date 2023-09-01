@@ -130,14 +130,13 @@ npm run dev
 
 
 
-#### `RUTA DE LOGUEO` 
-
-#### `"GET":` **http://127.10.10.10:5100/login**
+- ##### REGISTRO DE EMPLEADOS
 
 ![login](./img/Login.gif)
 
 - **Aviso**:  Tenga en cuenta que el tiempo de validez de su inicio de sesión es de solo **3 horas**. Cuando expire, deberá realizar un nuevo inicio de sesión siguiendo las indicaciones detalladas en el video.
 
+  - Nombre "string"
 
 
 # ENDPOINTS
@@ -176,82 +175,7 @@ npm run dev
 
 
 
-```json
-**REGISTRO DE ANIMALES**
-
-{
-	Nombre: "string"
-	Especie: "string"
-	Edad: "int"
-	Tipo alimentación: "array"
-        Plantas
-        Carne
-        Inseptos
-        Frutas
-	Sexo: "Array"
-		Macho 
-		Hembra
-	Altura: "string"
-	Peso: "string"
-	Zona: "string"
-	Habitat: "string"
-	Historial Médico: "string"
-}
-```
-
-```json
-**REGISTRO DE EMPLEADOS**
-
-{
-  Cedula: "int"
-  Contraseña: "string"
-  Nombre: "string"
-  Teléfono: "string"
-  Dirección: "string"
-  Correo electrónico: "string"
-  Departamento: "string"
-  Cargo: "string"
-}
-```
-
-```json
-**REGISTRO DE INSUMOS**
-
-{
-  Nombre: "string"
-  Descripción: "string"
-  Fecha_compra: "string"
-  Cantidad: "int"
-  Proveedor: "string"
-}
-```
-
-```json
-**REGISTRO DE ZONAS**
-
-{
-  Clasificación: "string"
-  Descripción: "string"
-  Demensión: "array"
-    Largo
-    Ancho
-}
-```
-
-```json
-**REGISTRO DE TICKETS**
-
-{
-  Cédula: "int"
-  Nombre: "string"
-  Teléfono: "string"
-  Fecha_ingreso: "string"
-  Categoria: "array"
-    Básico
-    VIP
-  Valor ticket: "int"
-}
-```
+- ##### REGISTRO DE TICKETS
 
 
 
@@ -319,175 +243,8 @@ npm run dev
 - Búsqueda de animales por clasificación basada en alimentación (herbívoro, carnívoro, omnívoro).
   - `http://127.10.10.10:5100/animales/food/carne`
 - Búsqueda de animales por clasificación basada en su hábitat (terrestres, acuáticos, aéreos).
-  - `http://127.10.10.10:5100/animales/habit/Sabana`
 
-
-
-###### POST: 
-
-​	Para agregar a un animal tiene que pasar el siguiente objeto por el **Body**
-
-```json
-{
-  "nombre": "Tigre",
-  "especie": "Tigre",
-  "edad": 18,
-  "tipo_alimentacion": "carne",
-  "sexo": "macho",
-  "altura": 1.43,
-  "peso": "54 kilos",
-  "zona": "Zona de carnivoros",
-  "habitat": "Sabana",
-  "historial_medico": "Fuerte"
-}
-```
-
-​	**NOTA:** Los datos de entrada y las keys están validadas, si no pasa alguna key o dato como se especifica, el programa va a arrojar un error.
-
-
-
-###### PUT: 
-
-​	Para actualizar el registro de un animal tiene que pasar el siguiente objeto por el **Body** y tiene que especificar el ID por el header.
-
-- `http://127.10.10.10:5100/animales/1`
-
-```json
-{
-  "nombre": "Tigre",
-  "especie": "Tigre",
-  "edad": 18,
-  "tipo_alimentacion": "carne",
-  "sexo": "macho",
-  "altura": 1.43,
-  "peso": "54 kilos",
-  "zona": "Zona de carnivoros",
-  "habitat": "Sabana",
-  "historial_medico": "Fuerte"
-}
-```
-
-
-
-###### DELETE: 
-
-​	Para eliminar el registro de un animal tiene que especificar el ID por el header.
-
-- `http://127.10.10.10:5100/animales/1`
-
-
-
-
-
-### INSUMOS
-
-###### GET: 
-
-- Listado de todos los insumos existentes.
-  - `http://127.10.10.10:5100/insumos`
-- Búsqueda de insumos por nombre.
-  - `http://127.10.10.10:5100/insumos/nombre/Paracetamol`
-
-
-
-###### POST: 
-
-​	Para agregar a un insumo tiene que pasar el siguiente objeto por el **Body**
-
-```json
-{
-  "nombre": "Ibuprofeno 3800 mg",
-  "descripcion": "analgésico",
-  "fecha_compra": "2023-08-05",
-  "cantidad": 80,
-  "proveedor": "SaludTotal"
-}
-```
-
-​	**NOTA:** Los datos de entrada y las keys están validadas, si no pasa alguna key o dato como se especifica, el programa va a arrojar un error.
-
-
-
-###### PUT: 
-
-​	Para actualizar el registro de un insumo tiene que pasar el siguiente objeto por el **Body** y tiene que especificar el ID por el header.
-
-- `http://127.10.10.10:5100/insumos/1`
-
-```json
-{
-  "nombre": "Ibuprofeno 3800 mg",
-  "descripcion": "analgésico",
-  "fecha_compra": "2023-08-05",
-  "cantidad": 80,
-  "proveedor": "SaludTotal"
-}
-```
-
-
-
-###### DELETE: 
-
-​	Para eliminar el registro de un insumo tiene que especificar el ID por el header.
-
-- `http://127.10.10.10:5100/insumos/1`
-
-
-
-
-
-### ZONAS
-
-###### GET: 
-
-- Listado de todos los insumos existentes.
-  - `http://127.10.10.10:5100/insumos`
-- Búsqueda de zonas por nombre.
-  - `http://127.10.10.10:5100/zonas/camping`
-
-
-
-###### POST: 
-
-​	Para agregar a una zona tiene que pasar el siguiente objeto por el **Body**
-
-```json
-{
-  "nombre": "Zona",
-  "clasificacion": "Clasificación C - Bajo riesgo",
-  "descripcion": "Zona",
-  "dimension": {
-      "ancho": 100,
-      "largo": 70
-  }
-}
-```
-
-​	**NOTA:** Los datos de entrada y las keys están validadas, si no pasa alguna key o dato como se especifica, el programa va a arrojar un error.
-
-
-
-###### PUT: 
-
-​	Para actualizar el registro de una zona tiene que pasar el siguiente objeto por el **Body** y tiene que especificar el ID por el header.
-
-- `http://127.10.10.10:5100/zonas/1`
-
-```json
-{
-  "nombre": "Zona",
-  "clasificacion": "Clasificación C - Bajo riesgo",
-  "descripcion": "Zona",
-  "dimension": {
-      "ancho": 100,
-      "largo": 70
-  }
-}
-```
-
-
-
-###### DELETE: 
+  db.animales.find()
 
 ​	Para eliminar el registro de una zona tiene que especificar el ID por el header.
 
@@ -495,110 +252,19 @@ npm run dev
 
 
 
-### TAQUILLAS
-###### GET admin user: 
-
-- Listado de todos las taquillas existentes.
-  - `http://127.10.10.10:5100/taquillas`
-- bucar taquill por cedula.
-  - `http://127.10.10.10:5100/taquillas/110231231`
-- bucar taquill por id.
-  - `http://127.10.10.10:5100/taquillas/1`
-
-  ###### post  admin: 
-- crear taquill
-  - `http://127.10.10.10:5100/taquillas/create`
-  ```js
-  {
-      "cedula": 110231231,
-      "nombre": "Juan Carlos Gomez",
-      "telefono": "3013009876543",
-      "fecha_ingreso": "2023-08-22",
-      "categoria": {
-        "tipo": "vip",
-        "precio": 250000,
-      },
-    },
-  ```
-
-  ###### delete  admin: 
-
-- eliminar taquill
-  - `http://127.10.10.10:5100/taquillas/delete/110231231`
-
-​	**NOTA:** Los datos de entrada y las keys están validadas, si no pasa alguna key o dato como se especifica, el programa va a arrojar un error.
-
-### EMPLEADOS
-
-###### GET admin user: 
-
-- Listado de todos los empleados existentes.
-  - `http://127.10.10.10:5100/empleados`
-- Buscar empelado por cedula
-  - `http://127.10.10.10:5100/empleados/cedula/110231923`
-- Buscar empelado por nombre
-  - `http://127.10.10.10:5100/empleados/nombre/Katherin`
-- Buscar empelado por cargo
-  - `http://127.10.10.10:5100/empleados/cargo/Jefe`
-
-###### POST admin 
-- Crear usuario
-  - `http://127.10.10.10:5100/empleados/create`
-
-```json
-  {
-    "cedula": 110231923,
-    "nombre": "Katherin Parra",
-    "telefono": "73202514581",
-    "direccion": "Calle 58 # 12 - 45 Bucaramanga, Santander",
-    "correo_electronico": "Katherin@gmail.com",
-    "departamento": "Sistemas",
-    "cargo": "Jefe en departamento de sistemas",
-  }
-```
-###### PUT admin 
-
-- actualizar usuario
-  - `http://127.10.10.10:5100/empleados/update/110231923`
-
-```json
-  {
-    "nombre": "Katherin Parra",
-    "telefono": "73202514581",
-    "direccion": "Calle 58 # 12 - 45 Bucaramanga, Santander",
-    "correo_electronico": "Katherin@gmail.com",
-    "departamento": "Sistemas",
-    "cargo": "Jefe en departamento de sistemas",
-  }
-```
-###### DELETE admin 
-- actualizar usuario
-  - `http://127.10.10.10:5100/empleados/delete/110231923`
-
-
-## LIBRERIAS UTILIZADAS
+#### LIBRERIAS UTILIZADAS
 
 El desarrollo del sistema utilizará las siguientes librerías:
 
-```
-"devDependencies": {
-  "dotenv": "16.3.1",
-  "express": "4.18.2",
-  "express-rate-limit": "6.9.0",
-  "express-routes-versioning": "1.0.1",
-  "express-validator": "7.0.1",
-  "jose": "4.14.4",
-  "mongodb": "5.8.1",
-  "nodemon": "3.0.1",
-  "passport": "0.6.0",
-  "passport-http-bearer": "1.0.1"
-}
-```
+- class-transformer
+- class-validator
+- dotenv
+- express
+- express-rate-limit
+- jose
+- mongodb
+- nodemon
+- reflect-metadata
+- typescript
 
-
-
-# NOTA
-
-En tal caso de presentar algún error el código, comunicarse con el desarrollador.
-
-`EMAIL:` [Jhonhernandez.1899@gmail.com](mailto:Jhonhernandez.1899@gmail.com)
+`EMAIL:` [caicedonicolas150@gmail.com](mailto:caicedonicolas150@gmail.com)
