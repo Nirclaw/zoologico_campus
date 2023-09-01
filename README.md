@@ -495,6 +495,85 @@ npm run dev
 
 
 
+### TAQUILLAS
+###### GET admin user: 
+
+- Listado de todos las taquillas existentes.
+  - `http://127.10.10.10:5100/taquillas`
+- bucar taquill por cedula.
+  - `http://127.10.10.10:5100/taquillas/110231231`
+- bucar taquill por id.
+  - `http://127.10.10.10:5100/taquillas/1`
+
+  ###### post  admin: 
+- crear taquill
+  - `http://127.10.10.10:5100/taquillas/create`
+  ```js
+  {
+      "cedula": 110231231,
+      "nombre": "Juan Carlos Gomez",
+      "telefono": "3013009876543",
+      "fecha_ingreso": "2023-08-22",
+      "categoria": {
+        "tipo": "vip",
+        "precio": 250000,
+      },
+    },
+  ```
+
+  ###### delete  admin: 
+
+- eliminar taquill
+  - `http://127.10.10.10:5100/taquillas/delete/110231231`
+
+​	**NOTA:** Los datos de entrada y las keys están validadas, si no pasa alguna key o dato como se especifica, el programa va a arrojar un error.
+
+### EMPLEADOS
+
+###### GET admin user: 
+
+- Listado de todos los empleados existentes.
+  - `http://127.10.10.10:5100/empleados`
+- Buscar empelado por cedula
+  - `http://127.10.10.10:5100/empleados/cedula/110231923`
+- Buscar empelado por nombre
+  - `http://127.10.10.10:5100/empleados/nombre/Katherin`
+- Buscar empelado por cargo
+  - `http://127.10.10.10:5100/empleados/cargo/Jefe`
+
+###### POST admin 
+- Crear usuario
+  - `http://127.10.10.10:5100/empleados/create`
+
+```json
+  {
+    "cedula": 110231923,
+    "nombre": "Katherin Parra",
+    "telefono": "73202514581",
+    "direccion": "Calle 58 # 12 - 45 Bucaramanga, Santander",
+    "correo_electronico": "Katherin@gmail.com",
+    "departamento": "Sistemas",
+    "cargo": "Jefe en departamento de sistemas",
+  }
+```
+###### PUT admin 
+
+- actualizar usuario
+  - `http://127.10.10.10:5100/empleados/update/110231923`
+
+```json
+  {
+    "nombre": "Katherin Parra",
+    "telefono": "73202514581",
+    "direccion": "Calle 58 # 12 - 45 Bucaramanga, Santander",
+    "correo_electronico": "Katherin@gmail.com",
+    "departamento": "Sistemas",
+    "cargo": "Jefe en departamento de sistemas",
+  }
+```
+###### DELETE admin 
+- actualizar usuario
+  - `http://127.10.10.10:5100/empleados/delete/110231923`
 
 
 ## LIBRERIAS UTILIZADAS
