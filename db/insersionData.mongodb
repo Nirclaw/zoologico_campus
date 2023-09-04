@@ -401,8 +401,10 @@ db.roles.insertMany([
     },
   },
   {
-    user: "Miguel",
-    password: "123456789",
+
+    user: "empleado",
+    password: "987654321",
+
     rol: "user",
     permisos: {
       "/animales": ["1.0.0"],
