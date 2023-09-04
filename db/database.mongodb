@@ -1,0 +1,308 @@
+use("mongo_zoo");
+db.createCollection("contador");
+db.contador.insertMany([
+    {ID: "animalesid", sequenceValue: 1},
+    {ID: "empleadosid", sequenceValue: 1},
+    {ID: "insumosid", sequenceValue: 1},
+    {ID: "zonasid", sequenceValue: 1},
+    {ID: "taquillaid", sequenceValue: 1}
+])
+
+use("mongo_zoo");
+db.createCollection("animales", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "animales",
+      required: [
+        "id",
+        "nombre",
+        "especie",
+        "edad",
+        "sexo",
+        "tipo_alimentacion",
+        "altura",
+        "peso",
+        "zona",
+        "habitat",
+        "historial_medico",
+      ],
+      properties: {
+        id: {
+          bsonType: "int",
+          description: "dato incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "Dato incorrecto incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        especie: {
+          bsonType: "string",
+          description: "Dato es incorrecto",
+        },
+        edad: {
+          bsonType: "number",
+          description: "Dato incorrecto",
+        },
+        tipo_alimentacion: {
+          enum: ["plantas", "carne", "inseptos", "frutas"],
+          description: "plantas o carne o inseptos o frutas",
+        },
+        sexo: {
+          enum: ["macho", "hembra"],
+          description: "Debe ser macho o hembra",
+        },
+        altura: {
+          bsonType: "double",
+          description: "el dato es incorrecto",
+        },
+        peso: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+        zona: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+        habitat: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+        historial_medico: {
+          bsonType: "string",
+          description: "el dato es incorrecto",
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("empleados", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "empleados",
+      required: [
+        "id",
+        "cedula",
+        "nombre",
+        "departamento",
+        "cargo",
+        "telefono",
+        "correo_electronico",
+        "direccion",
+      ],
+      properties: {
+        id: {
+          bsonType: "int",
+          description: "el tipo es dato incorrecto",
+        },
+        cedula: {
+          bsonType: "int",
+          description: "el tipo de dato es incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        departamento: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        cargo: {
+          bsonType: "string",
+          description: "El tipo de dato es incorrecto",
+        },
+        telefono: {
+          bsonType: "string",
+          description: "el tipo de dato es incorrecto",
+        },
+        correo_electronico: {
+          bsonType: "string",
+          description: "El tipo de dato no es correcto",
+        },
+        direccion: {
+          bsonType: "string",
+          description: "el tipo de dato no es correcto",
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("insumos", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "insumos",
+      required: [
+        "id",
+        "nombre",
+        "descripcion",
+        "fecha_compra",
+        "cantidad",
+        "proveedor",
+      ],
+      properties: {
+        id: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        descripcion: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+        },
+        fecha_compra: {
+          bsonType: "string",
+          description: "la fecha debe ser YYYY-MM-DD",
+        },
+        cantidad: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        proveedor: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("zonas", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "Zonas",
+      required: ["id", "nombre", "descripcion", "clasificacion", "dimension"],
+      properties: {
+        id: {
+          bsonType: "int",
+          description: "el tipo es dato incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+          pattern: "[a-zA-ZáéíóúÁÉÍÓÚñÑs]+$",
+        },
+        clasificacion: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+        },
+        descripcion: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+        },
+        dimension: {
+          bsonType: "object",
+          required: ["ancho", "largo"],
+          properties: {
+            ancho: {
+              bsonType: "number",
+              description: "el tipo es dato incorrecto",
+            },
+            largo: {
+              bsonType: "number",
+              description: "el tipo es dato incorrecto",
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("taquilla", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "taquilla",
+      required: [
+        "id",
+        "cedula",
+        "nombre",
+        "telefono",
+        "fecha_ingreso",
+        "categoria",
+      ],
+      properties: {
+        id: {
+          bsonType: "int",
+          description: "el tipo es dato incorrecto",
+        },
+        cedula: {
+          bsonType: "number",
+          description: "el tipo es dato incorrecto",
+        },
+        nombre: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+        },
+        telefono: {
+          bsonType: "string",
+          description: "el tipo es dato incorrecto",
+        },
+        fecha_ingreso: {
+          bsonType: "string",
+          description: "la fecha debe ser YYYY-MM-DD",
+        },
+        categoria: {
+          bsonType: "object",
+          required: ["tipo", "precio"],
+          properties: {
+            tipo: {
+              enum: ["basico", "vip"],
+              description: "debe ser basico o vip",
+            },
+            precio: {
+              bsonType: "number",
+              description: "el tipo es dato incorrecto",
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+use("mongo_zoo");
+db.createCollection("roles", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      title: "roles",
+      required: ["user", "password", "rol", "permisos"],
+      properties: {
+        user: {
+          bsonType: "string",
+          description: "el tipo de dato es incorrecto",
+        },
+        password: {
+          bsonType: "string",
+          description: "el tipo de dato es incorrecto",
+        },
+        rol: {
+          enum: ["admin", "user"],
+          description: "debe escoger un rol entre admin,user,root",
+        },
+        permisos: {
+          bsonType: "object",
+          description: "ingrese los persmisos",
+        },
+      },
+    },
+  },
+});

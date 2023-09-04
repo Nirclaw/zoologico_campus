@@ -1,0 +1,415 @@
+//insert a la coleccion contador
+use("mongo_zoo");
+db.contador.insertMany([
+  { id: "animales", contador_valor: 0 },
+  { id: "empleados", contador_valor: 0 },
+  { id: "insumos", contador_valor: 0 },
+  { id: "zonas", contador_valor: 0 },
+  { id: "taquilla", contador_valor: 0 },
+]);
+
+//insercion de a la coleccion animales
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+
+db.animales.insertMany([
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Leon",
+    especie: "Panthera leo",
+    edad: 18,
+    tipo_alimentacion: "carne",
+    sexo: "macho",
+    altura: 1.43,
+    peso: "54 kilos",
+    zona: "Zona de carnivoros",
+    habitat: "Sabana",
+    historial_medico: "Llega en buen estado de salud",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Elefante Africano",
+    especie: "Loxodonta africana",
+    edad: 35,
+    tipo_alimentacion: "plantas",
+    sexo: "hembra",
+    altura: 3.2,
+    peso: "4500 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Sabana y bosques",
+    historial_medico: "Tratamiento para una lesión causada por caida.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Elefante Australiano",
+    especie: "Loxodonta Australiana",
+    edad: 25,
+    tipo_alimentacion: "plantas",
+    sexo: "macho",
+    altura: 3.8,
+    peso: "4100 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Sabana y bosques",
+    historial_medico:
+      "Tratamiento para una lesión en la pata delantera derecha.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Tigre de Bengala",
+    especie: "Panthera tigris tigris",
+    edad: 10,
+    tipo_alimentacion: "carne",
+    sexo: "macho",
+    altura: 1.89,
+    peso: "250 kilos",
+    zona: "Zona de carnívoros",
+    habitat: "Selvas y manglares",
+    historial_medico: "Control regular de salud, en buen estado de salud.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Cebra de Grevy",
+    especie: "Equus grevyi",
+    edad: 7,
+    tipo_alimentacion: "frutas",
+    sexo: "hembra",
+    altura: 1.5,
+    peso: "400 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Llanuras y sabanas",
+    historial_medico: "Recuperándose de una lesión en la pierna.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Girafa Masai",
+    especie: "Giraffa tippelskirchi",
+    edad: 9,
+    tipo_alimentacion: "plantas",
+    sexo: "hembra",
+    altura: 5.5,
+    peso: "1200 kilos",
+    zona: "Zona de herbívoros",
+    habitat: "Savanas y bosques abiertos",
+    historial_medico: "Recuperándose de una pequeña herida en el cuello.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Lobo Gris",
+    especie: "Canis lupus",
+    edad: 6,
+    tipo_alimentacion: "carne",
+    sexo: "macho",
+    altura: 0.75,
+    peso: "40 kilos",
+    zona: "Zona de carnívoros",
+    habitat: "Bosques y montañas",
+    historial_medico:
+      "En buen estado de salud, se le realiza seguimiento regular.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Hipopótamo Común",
+    especie: "Hippopotamus amphibius",
+    edad: 20,
+    tipo_alimentacion: "plantas",
+    sexo: "macho",
+    altura: 1.5,
+    peso: "1800 kilos",
+    zona: "Zona de herbívoros acuáticos",
+    habitat: "Ríos y lagos de África",
+    historial_medico: "Recientemente tratado por una infección en la piel.",
+  },
+  {
+    id: Number(siguienteID("animales")),
+    nombre: "Hipopótamo Común",
+    especie: "Hippopotamus amphibius",
+    edad: 20,
+    tipo_alimentacion: "plantas",
+    sexo: "hembra",
+    altura: 1.5,
+    peso: "1600 kilos",
+    zona: "Zona de herbívoros acuáticos",
+    habitat: "Ríos y lagos de África",
+    historial_medico: "En buen estado de salud.",
+  },
+]);
+
+//insert a la coleccion empleados
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+
+use("mongo_zoo");
+db.empleados.insertMany([
+  {
+    id: Number(siguienteID("empleados")),
+    cedula: 110231923,
+    nombre: "Katherin Parra",
+    telefono: "+57 3202514581",
+    direccion: "Calle 58 # 12 - 45 Bucaramanga, Santander",
+    correo_electronico: "Katherin@gmail.com",
+    departamento: "Sistemas",
+    cargo: "Jefe en departamento de sistemas",
+  },
+  {
+    id: Number(siguienteID("empleados")),
+    cedula: 210456789,
+    nombre: "Juan Pérez",
+    telefono: "+57 3101234567",
+    direccion: "Avenida 5 # 23 - 67 Medellín, Antioquia",
+    correo_electronico: "juan.perez@email.com",
+    departamento: "Recursos Humanos",
+    cargo: "Especialista en Contratación",
+  },
+  {
+    id: Number(siguienteID("empleados")),
+    cedula: 123789456,
+    nombre: "Laura Rodríguez",
+    telefono: "+57 3159876543",
+    direccion: "Carrera 12 # 34 - 56 Bogotá, D.C.",
+    correo_electronico: "laura.rodriguez@email.com",
+    departamento: "Finanzas",
+    cargo: "Contadora Principal",
+  },
+  {
+    id: Number(siguienteID("empleados")),
+    cedula: 987654321,
+    nombre: "Carlos Gómez",
+    telefono: "+57 3007654321",
+    direccion: "Calle 7 # 45 - 22 Barranquilla, Atlántico",
+    correo_electronico: "carlos.gomez@email.com",
+    departamento: "Administración",
+    cargo: "Asistente Administrativo",
+  },
+  {
+    id: Number(siguienteID("empleados")),
+    cedula: 789123456,
+    nombre: "María López",
+    telefono: "+57 3109871234",
+    direccion: "Avenida 2 # 10 - 15 Cali, Valle del Cauca",
+    correo_electronico: "maria.lopez@email.com",
+    departamento: "Marketing",
+    cargo: "Especialista en Estrategia de Marketing",
+  },
+]);
+
+//inser a la coleccion cliente
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+
+use("mongo_zoo");
+db.insumos.insertMany([
+  {
+    id: Number(siguienteID("insumos")),
+    nombre: "Azitromicina",
+    descripcion: "Azitromicina para animales",
+    fecha_compra: "2023-08-12",
+    cantidad: 20,
+    proveedor: "NexGard",
+  },
+  {
+    id: Number(siguienteID("insumos")),
+    nombre: "Paracetamol 500 mg",
+    descripcion: "Analgésico y antipirético",
+    fecha_compra: "2023-07-25",
+    cantidad: 100,
+    proveedor: "Farmacias XYZ",
+  },
+  {
+    id: Number(siguienteID("insumos")),
+    nombre: "Omeprazol 20 mg",
+    descripcion: "Antiácido y protector gástrico",
+    fecha_compra: "2023-08-03",
+    cantidad: 50,
+    proveedor: "Distribuciones Saludables",
+  },
+  {
+    id: Number(siguienteID("insumos")),
+    nombre: "Insulina Lantus",
+    descripcion: "Para el tratamiento de la diabetes",
+    fecha_compra: "2023-07-10",
+    cantidad: 30,
+    proveedor: "Farmacias DiabetesCare",
+  },
+  {
+    id: Number(siguienteID("insumos")),
+    nombre: "Ibuprofeno 400 mg",
+    descripcion: "Antiinflamatorio y analgésico",
+    fecha_compra: "2023-08-05",
+    cantidad: 80,
+    proveedor: "Farmacias SaludTotal",
+  },
+]);
+
+//inser a la coleccion zonas
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+
+use("mongo_zoo");
+db.zonas.insertMany([
+  {
+    id: Number(siguienteID("zonas")),
+    nombre: "Zona de Carnivoros",
+    clasificacion: "Clasificacion A - Alto riesgo",
+    descripcion: "Zona de alto riesgo para los visitantes",
+    dimension: {
+      ancho: 25,
+      largo: 12,
+    },
+  },
+  {
+    id: Number(siguienteID("zonas")),
+    nombre: "Acuario Marino",
+    clasificacion: "Clasificación A - Alto riesgo",
+    descripcion: "Zona submarina con tiburones y peces tropicales",
+    dimension: {
+      ancho: 60,
+      largo: 30,
+    },
+  },
+  {
+    id: Number(siguienteID("zonas")),
+    nombre: "Zona de aves",
+    clasificacion: "Clasificación C - Bajo riesgo",
+    descripcion: "Zona de de aves con tucanes",
+    dimension: {
+      ancho: 100,
+      largo: 70,
+    },
+  },
+  {
+    id: Number(siguienteID("zonas")),
+    nombre: "Zona de camping",
+    clasificacion: "Clasificación C - Bajo riesgo",
+    descripcion: "Zona de camping para los visitantes",
+    dimension: {
+      ancho: 80,
+      largo: 50,
+    },
+  },
+]);
+
+// insert a la coleccion taquilla
+use("mongo_zoo");
+function siguienteID(coleccion) {
+  const secuenciaDocumento = db.contador.findOneAndUpdate(
+    { id: coleccion },
+    { $inc: { contador_valor: 1 } },
+    { returnDocument: "after" }
+  );
+  return secuenciaDocumento.contador_valor;
+}
+
+use("mongo_zoo");
+db.taquilla.insertMany([
+  {
+    id: Number(siguienteID("taquilla")),
+    cedula: 110231231,
+    nombre: "Maria Camila Prieto",
+    telefono: "+301 3252154775",
+    fecha_ingreso: "2023-08-24",
+    categoria: {
+      tipo: "basico",
+      precio: 120000,
+    },
+  },
+  {
+    id: Number(siguienteID("taquilla")),
+    cedula: 110231231,
+    nombre: "Juan Carlos Gómez",
+    telefono: "+301 3009876543",
+    fecha_ingreso: "2023-08-22",
+    categoria: {
+      tipo: "vip",
+      precio: 250000,
+    },
+  },
+  {
+    id: Number(siguienteID("taquilla")),
+    cedula: 130987456,
+    nombre: "Ana Rodríguez",
+    telefono: "301 3009876543",
+    fecha_ingreso: "2023-08-25",
+    categoria: {
+      tipo: "basico",
+      precio: 150000,
+    },
+  },
+  {
+    id: Number(siguienteID("taquilla")),
+    cedula: 190765432,
+    nombre: "Ana Rodríguez",
+    telefono: "+301 3219876543",
+    fecha_ingreso: "2023-08-20",
+    categoria: {
+      tipo: "vip",
+      precio: 250000,
+    },
+  },
+  {
+    id: Number(siguienteID("taquilla")),
+    cedula: 180654321,
+    nombre: "Luisa Pérez",
+    telefono: "+301 3012345678",
+    fecha_ingreso: "2023-08-28",
+    categoria: {
+      tipo: "basico",
+      precio: 150000,
+    },
+  },
+]);
+
+use("mongo_zoo");
+db.roles.insertMany([
+  {
+    user: "Nicolas",
+    password: "123456789",
+    rol: "admin",
+    permisos: {
+      "/animales": ["1.0.0", "2.0.0"],
+      "/empleados": ["1.0.0", "2.0.0"],
+      "/insumos": ["1.0.0", "2.0.0"],
+      "/zonas": ["1.0.0", "2.0.0"],
+      "/taquillas": ["1.0.0", "2.0.0"],
+    },
+  },
+  {
+    user: "Miguel",
+    password: "123456789",
+    rol: "user",
+    permisos: {
+      "/animales": ["1.0.0"],
+      "/empleados": ["1.0.0"],
+      "/insumos": ["1.0.0"],
+      "/zonas": ["1.0.0"],
+      "/taquillas": ["1.0.0"],
+    },
+  },
+]);
