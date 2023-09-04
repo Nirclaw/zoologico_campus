@@ -389,7 +389,7 @@ db.taquilla.insertMany([
 use("mongo_zoo");
 db.roles.insertMany([
   {
-    user: "Nicolas",
+    user: "admin",
     password: "123456789",
     rol: "admin",
     permisos: {
